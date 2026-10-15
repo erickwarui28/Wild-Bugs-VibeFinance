@@ -43,11 +43,15 @@ Three SQLite-stored example profiles contain risk tolerance, volatility ceiling,
 
 ## Data modes and persistence
 
-Explicit Live requests use real-source or cached evidence, never silently synthetic prices. If neither source is usable, an unavailable response is correct. Explicit Demo uses the seeded generator. Offline bundled Demo supports INFY/Rohan only and discloses missing legacy coverage metadata.
+Explicit Live requests use real-source or cached evidence, never silently synthetic prices. If neither source is usable, an unavailable response is correct. Explicit Demo uses the seeded generator. Offline bundled Demo supports INFY/Rohan only, with frozen synthetic source coverage. Older saved results without coverage metadata are explicitly disclosed.
 
 New analyses persist versioned SHA-256-hashed evidence snapshots bound to signed anonymous visitor capabilities. Charts and document citations resolve the owned snapshot. SQLite stores runs, decisions, traces, evidence, usage, spending and reset audits. Journal notes/watchlist preferences remain browser-local. Versioned migrations are transactional. Historical overwritten runs or untrusted old ownership cannot be safely reconstructed.
 
 ## Evaluation and operations
+
+First visits default to clearly labelled Demo; a remembered Live selection is respected. Current-analysis metrics distinguish the browser analysis-request duration (including identity/network overhead, excluding page/chart loading) from the matching server trace span. Session aggregates and single-session accuracy/Brier are not presented as current-run performance. The Eval page remains the published benchmark.
+
+Seed fixture version 2 adds repeatable positive and negative sessions to the INFY/SBIN teaching trends. The transactional fixture upgrade updates only generated SYNTHETIC seed bars, retaining Live/cached rows, profiles, immutable snapshots, history and quota/spending/reset audits. It does not reseed the production database. Older frozen results retain their original evidence. The risk card labels volatility relative to its 25% reference, not expected upside; the numeric weighting rules are unchanged.
 
 Session metrics include measured elapsed latency, example-portfolio HHI and evidence coverage. Fixture accuracy/Brier require synthetic future labels; Live predictions are not evaluated using synthetic outcomes. Published reports record source/data hashes, seed, configuration, chronological windows, abstentions and paired baselines. The synthetic last-30% window follows a 30-session purge. The runner fits no thresholds or calibration. Designed scenarios and overlapping labels limit generalization. Repeated local mock-engine timing is not field or HTTP performance.
 

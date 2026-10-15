@@ -13,7 +13,7 @@ Not financial advice. Demonstration only. The app runs keyless in mock mode.
 
 This repository is a single-commit source submission, not a GitHub Pages host. The built frontend is published in the `vibefinance/` folder of `erickwarui28.github.io`; the HTTPS API is hosted separately. The profile repository owns the manual VibeFinance quality workflow. Production builds use `VITE_BASE=/vibefinance/`; this URL does not depend on the source repository name.
 
-Use Node.js 22.12 or newer. No production credentials or databases are required for local review. Choose **Demo** in the UI for reproducible synthetic evidence without paid model calls.
+Use Node.js 22.12 or newer. No production credentials or databases are required for local review. First visits open **Demo** for reproducible synthetic evidence without paid model calls. **Try Live** is optional, and a saved Live selection is remembered.
 
 ## Quickstart
 

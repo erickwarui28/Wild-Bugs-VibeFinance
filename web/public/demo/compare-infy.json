@@ -1,15 +1,109 @@
 {
-  "runId": "run_3ad6a229_048065c8-5fa4-44c9-a623-d109a01c5925",
+  "runId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
   "results": [
     {
-      "runId": "run_3ad6a229_048065c8-5fa4-44c9-a623-d109a01c5925",
+      "evidenceCoverage": {
+        "capturedAt": "2026-10-15T12:20:43.200Z",
+        "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
+        "channels": [
+          {
+            "kind": "prices",
+            "count": 270,
+            "syntheticCount": 270,
+            "provenance": [
+              "SYNTHETIC"
+            ],
+            "firstDate": "2025-08-07",
+            "latestDate": "2026-08-19",
+            "dateBasis": "fixture",
+            "undatedCount": 0,
+            "calendarAgeDays": null,
+            "dateAheadOfCapture": false,
+            "retrievedFrom": null,
+            "retrievedThrough": null,
+            "retrievalUnknownCount": 0,
+            "sources": [
+              {
+                "name": "Seeded demo fixtures",
+                "url": null
+              }
+            ],
+            "notes": [
+              "Daily bars' close field, not a real-time quote service. The latest bar may be provisional; session completion and an unbroken trading history are not verified."
+            ]
+          },
+          {
+            "kind": "documents",
+            "count": 2,
+            "syntheticCount": 2,
+            "provenance": [
+              "SYNTHETIC"
+            ],
+            "firstDate": "2026-07-30",
+            "latestDate": "2026-08-03",
+            "dateBasis": "fixture",
+            "undatedCount": 0,
+            "calendarAgeDays": null,
+            "dateAheadOfCapture": false,
+            "retrievedFrom": null,
+            "retrievedThrough": null,
+            "retrievalUnknownCount": 0,
+            "sources": [
+              {
+                "name": "Seeded demo fixtures",
+                "url": null
+              }
+            ],
+            "notes": [
+              "Titles/summaries may be incomplete. Source dates can be publication or news-indexing dates, not retrieval times.",
+              "Undated live summaries remain browsable but are excluded from date-weighted sentiment retrieval.",
+              "2 distinct documents supplied retrieved excerpts to the agents."
+            ]
+          },
+          {
+            "kind": "flows",
+            "count": 1620,
+            "syntheticCount": 1620,
+            "provenance": [
+              "SYNTHETIC"
+            ],
+            "firstDate": "2025-08-07",
+            "latestDate": "2026-08-19",
+            "dateBasis": "fixture",
+            "undatedCount": 0,
+            "calendarAgeDays": null,
+            "dateAheadOfCapture": false,
+            "retrievedFrom": null,
+            "retrievedThrough": null,
+            "retrievalUnknownCount": 0,
+            "sources": [
+              {
+                "name": "Seeded demo fixtures",
+                "url": null
+              }
+            ],
+            "notes": [
+              "Market-wide flows do not establish buying or selling in this stock or its sector.",
+              "Sector series are listed by their citation provenance; demo sector flows are simulated."
+            ]
+          }
+        ]
+      },
+      "agentCache": {
+        "hit": true,
+        "sourceRunId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e",
+        "ageMs": 67
+      },
+      "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
+      "capturedAt": "2026-10-15T12:20:43.200Z",
+      "runId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
       "ticker": "INFY",
       "asOf": "2026-08-19",
       "profileId": "conservative",
       "compositeLabel": "bullish",
-      "compositeScore": 0.4504613570880467,
-      "confidence": 0.48102610554799646,
-      "agreement": 0.3404139972746052,
+      "compositeScore": 0.23433681816177404,
+      "confidence": 0.4477815280786224,
+      "agreement": 0.4253552852454304,
       "disagreements": [
         {
           "agents": [
@@ -17,17 +111,18 @@
             "sentiment"
           ],
           "explanation": {
-            "text": "Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "text": "Momentum is bullish (score 0.86) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "momentum.score",
                 "asOf": "2026-08-19",
-                "value": 0.9338,
+                "value": 0.8578,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               },
               {
                 "type": "data",
@@ -37,7 +132,8 @@
                 "value": -0.5,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -48,17 +144,18 @@
             "sentiment"
           ],
           "explanation": {
-            "text": "Risk is bullish (score 1.00) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "text": "Risk is bullish (score 0.34) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "risk.score",
                 "asOf": "2026-08-19",
-                "value": 0.9999,
+                "value": 0.3357,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               },
               {
                 "type": "data",
@@ -68,7 +165,8 @@
                 "value": -0.5,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -76,32 +174,34 @@
       ],
       "summary": [
         {
-          "text": "The combined read leans positive (score 0.45).",
+          "text": "The combined read leans positive (score 0.23).",
           "citations": [
             {
               "type": "data",
               "source": "derived",
               "field": "compositeScore",
               "asOf": "2026-08-19",
-              "value": 0.4505,
+              "value": 0.2343,
               "provenance": "SYNTHETIC",
               "origin": "confidence-weighted-agent-scores",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             }
           ]
         },
         {
-          "text": "Not every agent agrees. Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+          "text": "Not every agent agrees. Momentum is bullish (score 0.86) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
           "citations": [
             {
               "type": "data",
               "source": "derived",
               "field": "momentum.score",
               "asOf": "2026-08-19",
-              "value": 0.9338,
+              "value": 0.8578,
               "provenance": "SYNTHETIC",
               "origin": "orchestrator",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             },
             {
               "type": "data",
@@ -111,7 +211,8 @@
               "value": -0.5,
               "provenance": "SYNTHETIC",
               "origin": "orchestrator",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             }
           ]
         },
@@ -123,10 +224,11 @@
               "source": "derived",
               "field": "compositeScore",
               "asOf": "2026-08-19",
-              "value": 0.4505,
+              "value": 0.2343,
               "provenance": "SYNTHETIC",
               "origin": "confidence-weighted-agent-scores",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             }
           ]
         }
@@ -138,8 +240,8 @@
         "positionSizePct": 0.5,
         "concentrationAlert": {
           "hhiBefore": 0.15359999999999996,
-          "hhiAfter": 0.15228757119979947,
-          "sectorPct": 0.5942826902384006,
+          "hhiAfter": 0.15237171393538707,
+          "sectorPct": 0.5946743165168198,
           "alert": true
         },
         "behaviourNudges": [
@@ -154,7 +256,8 @@
                 "value": -0.0249,
                 "provenance": "SYNTHETIC",
                 "origin": "profile:conservative",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -168,10 +271,11 @@
                 "source": "derived",
                 "field": "profile.sectorWeight",
                 "asOf": "2026-08-19",
-                "value": 0.5943,
+                "value": 0.5947,
                 "provenance": "SYNTHETIC",
                 "origin": "profile:conservative",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           },
@@ -183,10 +287,11 @@
                 "source": "derived",
                 "field": "positionSizePct",
                 "asOf": "2026-08-19",
-                "value": 0.5291,
+                "value": 0.4926,
                 "provenance": "SYNTHETIC",
                 "origin": "profile:conservative",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -198,70 +303,74 @@
           "ticker": "INFY",
           "asOf": "2026-08-19",
           "label": "bullish",
-          "score": 0.9338339788385244,
-          "confidence": 0.8169169894192622,
+          "score": 0.8578331851397716,
+          "confidence": 0.7789165925698858,
           "claims": [
             {
-              "text": "The 20-day return is +12.7% and RSI is 100.",
+              "text": "The 20-day return is +11.0% and RSI is 77.",
               "citations": [
                 {
                   "type": "data",
                   "source": "ohlcv",
                   "field": "ret20",
                   "asOf": "2026-08-19",
-                  "value": 0.1271,
+                  "value": 0.1095,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "rsi14",
                   "asOf": "2026-08-19",
-                  "value": 100,
+                  "value": 76.6205,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
             {
-              "text": "The 20-day average (1110.3) is above the 50-day average (1019.9).",
+              "text": "The 20-day average (1114.3) is above the 50-day average (1022.7).",
               "citations": [
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "sma20",
                   "asOf": "2026-08-19",
-                  "value": 1110.3475,
+                  "value": 1114.265,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "sma50",
                   "asOf": "2026-08-19",
-                  "value": 1019.8692,
+                  "value": 1022.668,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
           ],
           "features": {
-            "ret20": 0.12709546793586202,
-            "rsi14": 100,
-            "sma20": 1110.3474999999999,
-            "sma50": 1019.8692000000001,
+            "ret20": 0.10952734613040827,
+            "rsi14": 76.62047107078487,
+            "sma20": 1114.265,
+            "sma50": 1022.6679999999999,
             "macd": 1,
-            "zRet20": 1.7750927732495165
+            "zRet20": 1.4377555913227447
           },
           "degraded": [],
-          "latencyMs": 9,
+          "latencyMs": 0,
           "mode": "mock"
         },
         {
@@ -283,7 +392,8 @@
                   "value": 0.6238,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
@@ -298,7 +408,8 @@
                   "value": 565.54,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
@@ -312,7 +423,7 @@
             "flowScore": -0.2511987687124817
           },
           "degraded": [],
-          "latencyMs": 7,
+          "latencyMs": 0,
           "mode": "mock"
         },
         {
@@ -334,7 +445,8 @@
                   "score": 0.917,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "doc",
@@ -344,7 +456,8 @@
                   "score": 0.299,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "doc",
@@ -354,7 +467,8 @@
                   "score": 0.298,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "doc",
@@ -364,7 +478,8 @@
                   "score": 0.274,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
@@ -379,7 +494,8 @@
                   "score": 0.917,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
@@ -389,7 +505,7 @@
             "lexicon": -0.5
           },
           "degraded": [],
-          "latencyMs": 4,
+          "latencyMs": 0,
           "mode": "mock"
         },
         {
@@ -397,26 +513,27 @@
           "ticker": "INFY",
           "asOf": "2026-08-19",
           "label": "bullish",
-          "score": 0.9998618279907336,
-          "confidence": 0.8499309139953668,
+          "score": 0.33569608854840416,
+          "confidence": 0.5178480442742021,
           "claims": [
             {
-              "text": "Annualised 20-day volatility is +0.0%.",
+              "text": "Annualised 20-day volatility is +16.6%.",
               "citations": [
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "vol20",
                   "asOf": "2026-08-19",
-                  "value": 0,
+                  "value": 0.1661,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
             {
-              "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 0.57.",
+              "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 1.11.",
               "citations": [
                 {
                   "type": "data",
@@ -426,28 +543,30 @@
                   "value": -0.0249,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "beta60",
                   "asOf": "2026-08-19",
-                  "value": 0.5708,
+                  "value": 1.1136,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
           ],
           "features": {
-            "vol20": 0.00003454300231658543,
+            "vol20": 0.16607597786289896,
             "maxDrawdown60": -0.02488506245662736,
-            "beta60": 0.570798735084332
+            "beta60": 1.11363209161766
           },
           "degraded": [],
-          "latencyMs": 2,
+          "latencyMs": 0,
           "mode": "mock"
         }
       ],
@@ -457,14 +576,108 @@
       "provenance": "SYNTHETIC"
     },
     {
-      "runId": "run_3ad6a229_048065c8-5fa4-44c9-a623-d109a01c5925",
+      "evidenceCoverage": {
+        "capturedAt": "2026-10-15T12:20:43.200Z",
+        "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
+        "channels": [
+          {
+            "kind": "prices",
+            "count": 270,
+            "syntheticCount": 270,
+            "provenance": [
+              "SYNTHETIC"
+            ],
+            "firstDate": "2025-08-07",
+            "latestDate": "2026-08-19",
+            "dateBasis": "fixture",
+            "undatedCount": 0,
+            "calendarAgeDays": null,
+            "dateAheadOfCapture": false,
+            "retrievedFrom": null,
+            "retrievedThrough": null,
+            "retrievalUnknownCount": 0,
+            "sources": [
+              {
+                "name": "Seeded demo fixtures",
+                "url": null
+              }
+            ],
+            "notes": [
+              "Daily bars' close field, not a real-time quote service. The latest bar may be provisional; session completion and an unbroken trading history are not verified."
+            ]
+          },
+          {
+            "kind": "documents",
+            "count": 2,
+            "syntheticCount": 2,
+            "provenance": [
+              "SYNTHETIC"
+            ],
+            "firstDate": "2026-07-30",
+            "latestDate": "2026-08-03",
+            "dateBasis": "fixture",
+            "undatedCount": 0,
+            "calendarAgeDays": null,
+            "dateAheadOfCapture": false,
+            "retrievedFrom": null,
+            "retrievedThrough": null,
+            "retrievalUnknownCount": 0,
+            "sources": [
+              {
+                "name": "Seeded demo fixtures",
+                "url": null
+              }
+            ],
+            "notes": [
+              "Titles/summaries may be incomplete. Source dates can be publication or news-indexing dates, not retrieval times.",
+              "Undated live summaries remain browsable but are excluded from date-weighted sentiment retrieval.",
+              "2 distinct documents supplied retrieved excerpts to the agents."
+            ]
+          },
+          {
+            "kind": "flows",
+            "count": 1620,
+            "syntheticCount": 1620,
+            "provenance": [
+              "SYNTHETIC"
+            ],
+            "firstDate": "2025-08-07",
+            "latestDate": "2026-08-19",
+            "dateBasis": "fixture",
+            "undatedCount": 0,
+            "calendarAgeDays": null,
+            "dateAheadOfCapture": false,
+            "retrievedFrom": null,
+            "retrievedThrough": null,
+            "retrievalUnknownCount": 0,
+            "sources": [
+              {
+                "name": "Seeded demo fixtures",
+                "url": null
+              }
+            ],
+            "notes": [
+              "Market-wide flows do not establish buying or selling in this stock or its sector.",
+              "Sector series are listed by their citation provenance; demo sector flows are simulated."
+            ]
+          }
+        ]
+      },
+      "agentCache": {
+        "hit": true,
+        "sourceRunId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e",
+        "ageMs": 67
+      },
+      "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
+      "capturedAt": "2026-10-15T12:20:43.200Z",
+      "runId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
       "ticker": "INFY",
       "asOf": "2026-08-19",
       "profileId": "moderate",
       "compositeLabel": "bullish",
-      "compositeScore": 0.4504613570880467,
-      "confidence": 0.48102610554799646,
-      "agreement": 0.3404139972746052,
+      "compositeScore": 0.23433681816177404,
+      "confidence": 0.4477815280786224,
+      "agreement": 0.4253552852454304,
       "disagreements": [
         {
           "agents": [
@@ -472,17 +685,18 @@
             "sentiment"
           ],
           "explanation": {
-            "text": "Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "text": "Momentum is bullish (score 0.86) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "momentum.score",
                 "asOf": "2026-08-19",
-                "value": 0.9338,
+                "value": 0.8578,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               },
               {
                 "type": "data",
@@ -492,7 +706,8 @@
                 "value": -0.5,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -503,17 +718,18 @@
             "sentiment"
           ],
           "explanation": {
-            "text": "Risk is bullish (score 1.00) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "text": "Risk is bullish (score 0.34) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "risk.score",
                 "asOf": "2026-08-19",
-                "value": 0.9999,
+                "value": 0.3357,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               },
               {
                 "type": "data",
@@ -523,7 +739,8 @@
                 "value": -0.5,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -531,32 +748,34 @@
       ],
       "summary": [
         {
-          "text": "The combined read leans positive (score 0.45).",
+          "text": "The combined read leans positive (score 0.23).",
           "citations": [
             {
               "type": "data",
               "source": "derived",
               "field": "compositeScore",
               "asOf": "2026-08-19",
-              "value": 0.4505,
+              "value": 0.2343,
               "provenance": "SYNTHETIC",
               "origin": "confidence-weighted-agent-scores",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             }
           ]
         },
         {
-          "text": "Not every agent agrees. Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+          "text": "Not every agent agrees. Momentum is bullish (score 0.86) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
           "citations": [
             {
               "type": "data",
               "source": "derived",
               "field": "momentum.score",
               "asOf": "2026-08-19",
-              "value": 0.9338,
+              "value": 0.8578,
               "provenance": "SYNTHETIC",
               "origin": "orchestrator",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             },
             {
               "type": "data",
@@ -566,7 +785,8 @@
               "value": -0.5,
               "provenance": "SYNTHETIC",
               "origin": "orchestrator",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             }
           ]
         },
@@ -578,10 +798,11 @@
               "source": "derived",
               "field": "compositeScore",
               "asOf": "2026-08-19",
-              "value": 0.4505,
+              "value": 0.2343,
               "provenance": "SYNTHETIC",
               "origin": "confidence-weighted-agent-scores",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             }
           ]
         }
@@ -590,11 +811,11 @@
         "profileId": "moderate",
         "riskTolerance": "moderate",
         "action": "accumulate",
-        "positionSizePct": 1.9,
+        "positionSizePct": 1.8,
         "concentrationAlert": {
           "hhiBefore": 0.16720000000000002,
-          "hhiAfter": 0.1672300777429969,
-          "sectorPct": 0.3328369144326342,
+          "hhiAfter": 0.16720892843195284,
+          "sectorPct": 0.33196534317765547,
           "alert": false
         },
         "behaviourNudges": [
@@ -609,14 +830,15 @@
                 "value": 1,
                 "provenance": "SYNTHETIC",
                 "origin": "profile:moderate",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
         ],
         "rationale": [
           {
-            "text": "ACCUMULATE: this matches a moderate investor looking at INFY.",
+            "text": "ACCUMULATE: score 0.234 exceeds the moderate profile's 0.10 accumulation threshold; risk and concentration checks constrain the illustrative size. This is not a bullish-classification threshold.",
             "citations": [
               {
                 "type": "data",
@@ -626,22 +848,46 @@
                 "value": 1,
                 "provenance": "SYNTHETIC",
                 "origin": "profile:moderate",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "compositeScore",
+                "asOf": "2026-08-19",
+                "value": 0.2343,
+                "provenance": "SYNTHETIC",
+                "origin": "synthesizer",
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "profile.accumulateThreshold",
+                "asOf": "2026-08-19",
+                "value": 0.1,
+                "provenance": "SYNTHETIC",
+                "origin": "profile:moderate",
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           },
           {
-            "text": "Suggested size is 1.9% of the portfolio after the risk and concentration checks.",
+            "text": "Suggested size is 1.8% of the portfolio after the risk and concentration checks.",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "positionSizePct",
                 "asOf": "2026-08-19",
-                "value": 1.9241,
+                "value": 1.7911,
                 "provenance": "SYNTHETIC",
                 "origin": "profile:moderate",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -653,70 +899,74 @@
           "ticker": "INFY",
           "asOf": "2026-08-19",
           "label": "bullish",
-          "score": 0.9338339788385244,
-          "confidence": 0.8169169894192622,
+          "score": 0.8578331851397716,
+          "confidence": 0.7789165925698858,
           "claims": [
             {
-              "text": "The 20-day return is +12.7% and RSI is 100.",
+              "text": "The 20-day return is +11.0% and RSI is 77.",
               "citations": [
                 {
                   "type": "data",
                   "source": "ohlcv",
                   "field": "ret20",
                   "asOf": "2026-08-19",
-                  "value": 0.1271,
+                  "value": 0.1095,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "rsi14",
                   "asOf": "2026-08-19",
-                  "value": 100,
+                  "value": 76.6205,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
             {
-              "text": "The 20-day average (1110.3) is above the 50-day average (1019.9).",
+              "text": "The 20-day average (1114.3) is above the 50-day average (1022.7).",
               "citations": [
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "sma20",
                   "asOf": "2026-08-19",
-                  "value": 1110.3475,
+                  "value": 1114.265,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "sma50",
                   "asOf": "2026-08-19",
-                  "value": 1019.8692,
+                  "value": 1022.668,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
           ],
           "features": {
-            "ret20": 0.12709546793586202,
-            "rsi14": 100,
-            "sma20": 1110.3474999999999,
-            "sma50": 1019.8692000000001,
+            "ret20": 0.10952734613040827,
+            "rsi14": 76.62047107078487,
+            "sma20": 1114.265,
+            "sma50": 1022.6679999999999,
             "macd": 1,
-            "zRet20": 1.7750927732495165
+            "zRet20": 1.4377555913227447
           },
           "degraded": [],
-          "latencyMs": 9,
+          "latencyMs": 0,
           "mode": "mock"
         },
         {
@@ -738,7 +988,8 @@
                   "value": 0.6238,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
@@ -753,7 +1004,8 @@
                   "value": 565.54,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
@@ -767,7 +1019,7 @@
             "flowScore": -0.2511987687124817
           },
           "degraded": [],
-          "latencyMs": 7,
+          "latencyMs": 0,
           "mode": "mock"
         },
         {
@@ -789,7 +1041,8 @@
                   "score": 0.917,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "doc",
@@ -799,7 +1052,8 @@
                   "score": 0.299,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "doc",
@@ -809,7 +1063,8 @@
                   "score": 0.298,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "doc",
@@ -819,7 +1074,8 @@
                   "score": 0.274,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
@@ -834,7 +1090,8 @@
                   "score": 0.917,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
@@ -844,7 +1101,7 @@
             "lexicon": -0.5
           },
           "degraded": [],
-          "latencyMs": 4,
+          "latencyMs": 0,
           "mode": "mock"
         },
         {
@@ -852,26 +1109,27 @@
           "ticker": "INFY",
           "asOf": "2026-08-19",
           "label": "bullish",
-          "score": 0.9998618279907336,
-          "confidence": 0.8499309139953668,
+          "score": 0.33569608854840416,
+          "confidence": 0.5178480442742021,
           "claims": [
             {
-              "text": "Annualised 20-day volatility is +0.0%.",
+              "text": "Annualised 20-day volatility is +16.6%.",
               "citations": [
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "vol20",
                   "asOf": "2026-08-19",
-                  "value": 0,
+                  "value": 0.1661,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
             {
-              "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 0.57.",
+              "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 1.11.",
               "citations": [
                 {
                   "type": "data",
@@ -881,28 +1139,30 @@
                   "value": -0.0249,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "beta60",
                   "asOf": "2026-08-19",
-                  "value": 0.5708,
+                  "value": 1.1136,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
           ],
           "features": {
-            "vol20": 0.00003454300231658543,
+            "vol20": 0.16607597786289896,
             "maxDrawdown60": -0.02488506245662736,
-            "beta60": 0.570798735084332
+            "beta60": 1.11363209161766
           },
           "degraded": [],
-          "latencyMs": 2,
+          "latencyMs": 0,
           "mode": "mock"
         }
       ],
@@ -912,14 +1172,108 @@
       "provenance": "SYNTHETIC"
     },
     {
-      "runId": "run_3ad6a229_048065c8-5fa4-44c9-a623-d109a01c5925",
+      "evidenceCoverage": {
+        "capturedAt": "2026-10-15T12:20:43.200Z",
+        "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
+        "channels": [
+          {
+            "kind": "prices",
+            "count": 270,
+            "syntheticCount": 270,
+            "provenance": [
+              "SYNTHETIC"
+            ],
+            "firstDate": "2025-08-07",
+            "latestDate": "2026-08-19",
+            "dateBasis": "fixture",
+            "undatedCount": 0,
+            "calendarAgeDays": null,
+            "dateAheadOfCapture": false,
+            "retrievedFrom": null,
+            "retrievedThrough": null,
+            "retrievalUnknownCount": 0,
+            "sources": [
+              {
+                "name": "Seeded demo fixtures",
+                "url": null
+              }
+            ],
+            "notes": [
+              "Daily bars' close field, not a real-time quote service. The latest bar may be provisional; session completion and an unbroken trading history are not verified."
+            ]
+          },
+          {
+            "kind": "documents",
+            "count": 2,
+            "syntheticCount": 2,
+            "provenance": [
+              "SYNTHETIC"
+            ],
+            "firstDate": "2026-07-30",
+            "latestDate": "2026-08-03",
+            "dateBasis": "fixture",
+            "undatedCount": 0,
+            "calendarAgeDays": null,
+            "dateAheadOfCapture": false,
+            "retrievedFrom": null,
+            "retrievedThrough": null,
+            "retrievalUnknownCount": 0,
+            "sources": [
+              {
+                "name": "Seeded demo fixtures",
+                "url": null
+              }
+            ],
+            "notes": [
+              "Titles/summaries may be incomplete. Source dates can be publication or news-indexing dates, not retrieval times.",
+              "Undated live summaries remain browsable but are excluded from date-weighted sentiment retrieval.",
+              "2 distinct documents supplied retrieved excerpts to the agents."
+            ]
+          },
+          {
+            "kind": "flows",
+            "count": 1620,
+            "syntheticCount": 1620,
+            "provenance": [
+              "SYNTHETIC"
+            ],
+            "firstDate": "2025-08-07",
+            "latestDate": "2026-08-19",
+            "dateBasis": "fixture",
+            "undatedCount": 0,
+            "calendarAgeDays": null,
+            "dateAheadOfCapture": false,
+            "retrievedFrom": null,
+            "retrievedThrough": null,
+            "retrievalUnknownCount": 0,
+            "sources": [
+              {
+                "name": "Seeded demo fixtures",
+                "url": null
+              }
+            ],
+            "notes": [
+              "Market-wide flows do not establish buying or selling in this stock or its sector.",
+              "Sector series are listed by their citation provenance; demo sector flows are simulated."
+            ]
+          }
+        ]
+      },
+      "agentCache": {
+        "hit": true,
+        "sourceRunId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e",
+        "ageMs": 67
+      },
+      "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
+      "capturedAt": "2026-10-15T12:20:43.200Z",
+      "runId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912",
       "ticker": "INFY",
       "asOf": "2026-08-19",
       "profileId": "aggressive",
       "compositeLabel": "bullish",
-      "compositeScore": 0.4504613570880467,
-      "confidence": 0.48102610554799646,
-      "agreement": 0.3404139972746052,
+      "compositeScore": 0.23433681816177404,
+      "confidence": 0.4477815280786224,
+      "agreement": 0.4253552852454304,
       "disagreements": [
         {
           "agents": [
@@ -927,17 +1281,18 @@
             "sentiment"
           ],
           "explanation": {
-            "text": "Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "text": "Momentum is bullish (score 0.86) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "momentum.score",
                 "asOf": "2026-08-19",
-                "value": 0.9338,
+                "value": 0.8578,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               },
               {
                 "type": "data",
@@ -947,7 +1302,8 @@
                 "value": -0.5,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -958,17 +1314,18 @@
             "sentiment"
           ],
           "explanation": {
-            "text": "Risk is bullish (score 1.00) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "text": "Risk is bullish (score 0.34) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "risk.score",
                 "asOf": "2026-08-19",
-                "value": 0.9999,
+                "value": 0.3357,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               },
               {
                 "type": "data",
@@ -978,7 +1335,8 @@
                 "value": -0.5,
                 "provenance": "SYNTHETIC",
                 "origin": "orchestrator",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -986,32 +1344,34 @@
       ],
       "summary": [
         {
-          "text": "The combined read leans positive (score 0.45).",
+          "text": "The combined read leans positive (score 0.23).",
           "citations": [
             {
               "type": "data",
               "source": "derived",
               "field": "compositeScore",
               "asOf": "2026-08-19",
-              "value": 0.4505,
+              "value": 0.2343,
               "provenance": "SYNTHETIC",
               "origin": "confidence-weighted-agent-scores",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             }
           ]
         },
         {
-          "text": "Not every agent agrees. Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+          "text": "Not every agent agrees. Momentum is bullish (score 0.86) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
           "citations": [
             {
               "type": "data",
               "source": "derived",
               "field": "momentum.score",
               "asOf": "2026-08-19",
-              "value": 0.9338,
+              "value": 0.8578,
               "provenance": "SYNTHETIC",
               "origin": "orchestrator",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             },
             {
               "type": "data",
@@ -1021,7 +1381,8 @@
               "value": -0.5,
               "provenance": "SYNTHETIC",
               "origin": "orchestrator",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             }
           ]
         },
@@ -1033,10 +1394,11 @@
               "source": "derived",
               "field": "compositeScore",
               "asOf": "2026-08-19",
-              "value": 0.4505,
+              "value": 0.2343,
               "provenance": "SYNTHETIC",
               "origin": "confidence-weighted-agent-scores",
-              "fetchedAt": null
+              "fetchedAt": null,
+              "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
             }
           ]
         }
@@ -1045,11 +1407,11 @@
         "profileId": "aggressive",
         "riskTolerance": "aggressive",
         "action": "buy",
-        "positionSizePct": 1.9,
+        "positionSizePct": 1.7,
         "concentrationAlert": {
           "hhiBefore": 0.265,
-          "hhiAfter": 0.27744005033952857,
-          "sectorPct": 0.6130299874664994,
+          "hhiAfter": 0.27658221078827666,
+          "sectorPct": 0.6121568304966545,
           "alert": true
         },
         "behaviourNudges": [],
@@ -1065,22 +1427,24 @@
                 "value": 2,
                 "provenance": "SYNTHETIC",
                 "origin": "profile:aggressive",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           },
           {
-            "text": "Suggested size is 1.9% of the portfolio after the risk and concentration checks.",
+            "text": "Suggested size is 1.7% of the portfolio after the risk and concentration checks.",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "positionSizePct",
                 "asOf": "2026-08-19",
-                "value": 1.852,
+                "value": 1.724,
                 "provenance": "SYNTHETIC",
                 "origin": "profile:aggressive",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
               }
             ]
           }
@@ -1092,70 +1456,74 @@
           "ticker": "INFY",
           "asOf": "2026-08-19",
           "label": "bullish",
-          "score": 0.9338339788385244,
-          "confidence": 0.8169169894192622,
+          "score": 0.8578331851397716,
+          "confidence": 0.7789165925698858,
           "claims": [
             {
-              "text": "The 20-day return is +12.7% and RSI is 100.",
+              "text": "The 20-day return is +11.0% and RSI is 77.",
               "citations": [
                 {
                   "type": "data",
                   "source": "ohlcv",
                   "field": "ret20",
                   "asOf": "2026-08-19",
-                  "value": 0.1271,
+                  "value": 0.1095,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "rsi14",
                   "asOf": "2026-08-19",
-                  "value": 100,
+                  "value": 76.6205,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
             {
-              "text": "The 20-day average (1110.3) is above the 50-day average (1019.9).",
+              "text": "The 20-day average (1114.3) is above the 50-day average (1022.7).",
               "citations": [
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "sma20",
                   "asOf": "2026-08-19",
-                  "value": 1110.3475,
+                  "value": 1114.265,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "sma50",
                   "asOf": "2026-08-19",
-                  "value": 1019.8692,
+                  "value": 1022.668,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
           ],
           "features": {
-            "ret20": 0.12709546793586202,
-            "rsi14": 100,
-            "sma20": 1110.3474999999999,
-            "sma50": 1019.8692000000001,
+            "ret20": 0.10952734613040827,
+            "rsi14": 76.62047107078487,
+            "sma20": 1114.265,
+            "sma50": 1022.6679999999999,
             "macd": 1,
-            "zRet20": 1.7750927732495165
+            "zRet20": 1.4377555913227447
           },
           "degraded": [],
-          "latencyMs": 9,
+          "latencyMs": 0,
           "mode": "mock"
         },
         {
@@ -1177,7 +1545,8 @@
                   "value": 0.6238,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
@@ -1192,7 +1561,8 @@
                   "value": 565.54,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
@@ -1206,7 +1576,7 @@
             "flowScore": -0.2511987687124817
           },
           "degraded": [],
-          "latencyMs": 7,
+          "latencyMs": 0,
           "mode": "mock"
         },
         {
@@ -1228,7 +1598,8 @@
                   "score": 0.917,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "doc",
@@ -1238,7 +1609,8 @@
                   "score": 0.299,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "doc",
@@ -1248,7 +1620,8 @@
                   "score": 0.298,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "doc",
@@ -1258,7 +1631,8 @@
                   "score": 0.274,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
@@ -1273,7 +1647,8 @@
                   "score": 0.917,
                   "provenance": "SYNTHETIC",
                   "sourceUrl": null,
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
@@ -1283,7 +1658,7 @@
             "lexicon": -0.5
           },
           "degraded": [],
-          "latencyMs": 4,
+          "latencyMs": 0,
           "mode": "mock"
         },
         {
@@ -1291,26 +1666,27 @@
           "ticker": "INFY",
           "asOf": "2026-08-19",
           "label": "bullish",
-          "score": 0.9998618279907336,
-          "confidence": 0.8499309139953668,
+          "score": 0.33569608854840416,
+          "confidence": 0.5178480442742021,
           "claims": [
             {
-              "text": "Annualised 20-day volatility is +0.0%.",
+              "text": "Annualised 20-day volatility is +16.6%.",
               "citations": [
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "vol20",
                   "asOf": "2026-08-19",
-                  "value": 0,
+                  "value": 0.1661,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             },
             {
-              "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 0.57.",
+              "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 1.11.",
               "citations": [
                 {
                   "type": "data",
@@ -1320,28 +1696,30 @@
                   "value": -0.0249,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 },
                 {
                   "type": "data",
                   "source": "derived",
                   "field": "beta60",
                   "asOf": "2026-08-19",
-                  "value": 0.5708,
+                  "value": 1.1136,
                   "provenance": "SYNTHETIC",
                   "origin": "synthetic",
-                  "fetchedAt": null
+                  "fetchedAt": null,
+                  "snapshotId": "run_423ac036_d1fd97a6-87c1-4465-a901-607393c1b912"
                 }
               ]
             }
           ],
           "features": {
-            "vol20": 0.00003454300231658543,
+            "vol20": 0.16607597786289896,
             "maxDrawdown60": -0.02488506245662736,
-            "beta60": 0.570798735084332
+            "beta60": 1.11363209161766
           },
           "degraded": [],
-          "latencyMs": 2,
+          "latencyMs": 0,
           "mode": "mock"
         }
       ],

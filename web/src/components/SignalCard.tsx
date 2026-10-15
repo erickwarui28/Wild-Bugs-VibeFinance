@@ -22,10 +22,11 @@ export function SignalCard({ agent, reveal }: { agent: AgentOutput; reveal?: boo
         </div>
       </header>
       <div className="mb-3 flex items-center justify-between gap-2">
-        <LabelChip label={agent.label} />
+        {agent.agent === "risk" && !insufficient ? <span className="rounded-md border border-[var(--border)] px-2 py-0.5 text-xs">{agent.score > 0.2 ? "Lower measured volatility" : agent.score < -0.2 ? "Higher measured volatility" : "Near volatility reference"}</span> : <LabelChip label={agent.label} />}
         <ProvenanceBadge provenance={agent.claims[0]?.citations[0]?.provenance ?? "SYNTHETIC"} />
       </div>
       {insufficient ? null : <DivergingScoreBar score={agent.score} />}
+      {agent.agent === "risk" && !insufficient ? <p className="mt-2 text-xs text-[var(--text-muted)]">Positive risk contribution means lower realised volatility relative to the 25% annualised reference, not expected price upside. Drawdown and beta are separate measurements; low volatility does not mean safe.</p> : null}
       <div className="mt-3">
         <ConfidenceBar value={agent.confidence} />
       </div>

@@ -32,16 +32,17 @@ export function PortfolioTable({ profile, synthesis }: { profile: ProfileRow | u
   );
 }
 
-export function MetricsPanel({ metrics }: { metrics: { accuracy: { hitRate: number; n: number }; latency: { p50: number; p95: number }; hhi: { after: number }; brier: number; uncitedDropped: number } | null }) {
+export function MetricsPanel({ synthesis, timing }: { synthesis: Synthesis; timing: { runId: string; requestMs: number; traceMs: number | null } | null }) {
+  const current = timing?.runId === synthesis.runId ? timing : null;
   const tiles = [
-    ["Fixture accuracy vs 30d", metrics?.accuracy.n ? `${(metrics.accuracy.hitRate * 100).toFixed(0)}% · n ${metrics.accuracy.n}` : "Not evaluated", "Synthetic fixture outcomes only; live outcomes are not evaluated."],
-    ["Latency p50/p95", metrics ? `${Math.round(metrics.latency.p50)} / ${Math.round(metrics.latency.p95)} ms` : "—", "End-to-end latency across runs in this session."],
-    ["HHI", metrics ? metrics.hhi.after.toFixed(3) : "—", "Sum of squared portfolio weights. Effective holdings are 1/HHI."],
-    ["Fixture Brier", metrics?.accuracy.n ? metrics.brier.toFixed(3) : "Not evaluated", "Synthetic fixture evaluation only."],
+    ["Browser request", current ? `${Math.round(current.requestMs)} ms` : "Not recorded", "This analysis request, including anonymous identity setup, network and server response; excludes initial page loading and later chart requests."],
+    ["Server trace", current?.traceMs != null ? `${current.traceMs} ms` : "Not recorded", "Same run and span as Trace: server admission, ingestion and execution; not browser network time."],
+    ["Evidence coverage", `${synthesis.agents.filter(a => a.label !== "insufficient_evidence").length} / ${synthesis.agents.length} agents`, "Available specialist dimensions, not a freshness guarantee."],
+    ["HHI", synthesis.personalised.concentrationAlert?.hhiAfter.toFixed(3) ?? "Not recorded", "Illustrative portfolio concentration: sum of squared weights."],
   ];
   return (
     <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4">
-      <h2 className="mb-2 font-medium">Session metrics</h2>
+      <h2 className="mb-2 font-medium">Current analysis metrics</h2>
       <div className="grid grid-cols-2 gap-3">
         {tiles.map(([label, value, tip]) => (
           <div key={label} className="rounded-lg bg-[var(--surface-2)] p-3" title={tip}>
@@ -50,7 +51,8 @@ export function MetricsPanel({ metrics }: { metrics: { accuracy: { hitRate: numb
           </div>
         ))}
       </div>
-      <p className="mt-2 text-xs text-[var(--text-muted)]">Uncited claims dropped: {metrics?.uncitedDropped ?? 0}</p>
+      <p className="mt-2 text-xs text-[var(--text-muted)]">Timings belong to this run, not a session average. Browser time includes networking; parallel agent durations are not added together. Reused evidence does not mean the original agents ran again.</p>
+      <p className="mt-2 text-xs text-[var(--text-muted)]">A single session is not an accuracy benchmark. See Eval for the published synthetic holdout, baselines and limitations.</p>
     </div>
   );
 }

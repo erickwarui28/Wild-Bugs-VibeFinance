@@ -1,13 +1,24 @@
 {
-  "runId": "run_3ad6a229_ab535837-a92b-48f8-a302-77a5d9e54d4c",
+  "runId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e",
   "steps": [
     {
+      "name": "admission",
+      "startedAt": "2026-10-15T12:20:42.969Z",
+      "endedAt": "2026-10-15T12:20:43.115Z",
+      "latencyMs": 146,
+      "payload": {
+        "includesQueueWait": true
+      }
+    },
+    {
       "name": "ingest",
-      "startedAt": "2026-10-14T14:45:49.469Z",
-      "endedAt": "2026-10-14T14:45:49.483Z",
-      "latencyMs": 14,
+      "startedAt": "2026-10-15T12:20:43.115Z",
+      "endedAt": "2026-10-15T12:20:43.139Z",
+      "latencyMs": 24,
       "payload": {
         "asOf": "2026-08-19",
+        "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e",
+        "capturedAt": "2026-10-15T12:20:43.131Z",
         "bars": 270,
         "flows": 1620,
         "docs": 2,
@@ -18,69 +29,73 @@
     },
     {
       "name": "momentum",
-      "startedAt": "2026-10-14T14:45:49.483Z",
-      "endedAt": "2026-10-14T14:45:49.497Z",
-      "latencyMs": 14,
+      "startedAt": "2026-10-15T12:20:43.139Z",
+      "endedAt": "2026-10-15T12:20:43.146Z",
+      "latencyMs": 7,
       "payload": {
         "features": {
-          "ret20": 0.12709546793586202,
-          "rsi14": 100,
-          "sma20": 1110.3474999999999,
-          "sma50": 1019.8692000000001,
+          "ret20": 0.10952734613040827,
+          "rsi14": 76.62047107078487,
+          "sma20": 1114.265,
+          "sma50": 1022.6679999999999,
           "macd": 1,
-          "zRet20": 1.7750927732495165
+          "zRet20": 1.4377555913227447
         },
         "label": "bullish",
-        "score": 0.9338339788385244,
-        "confidence": 0.8169169894192622,
+        "score": 0.8578331851397716,
+        "confidence": 0.7789165925698858,
         "claims": [
           {
-            "text": "The 20-day return is +12.7% and RSI is 100.",
+            "text": "The 20-day return is +11.0% and RSI is 77.",
             "citations": [
               {
                 "type": "data",
                 "source": "ohlcv",
                 "field": "ret20",
                 "asOf": "2026-08-19",
-                "value": 0.1271,
+                "value": 0.1095,
                 "provenance": "SYNTHETIC",
                 "origin": "synthetic",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               },
               {
                 "type": "data",
                 "source": "derived",
                 "field": "rsi14",
                 "asOf": "2026-08-19",
-                "value": 100,
+                "value": 76.6205,
                 "provenance": "SYNTHETIC",
                 "origin": "synthetic",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               }
             ]
           },
           {
-            "text": "The 20-day average (1110.3) is above the 50-day average (1019.9).",
+            "text": "The 20-day average (1114.3) is above the 50-day average (1022.7).",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "sma20",
                 "asOf": "2026-08-19",
-                "value": 1110.3475,
+                "value": 1114.265,
                 "provenance": "SYNTHETIC",
                 "origin": "synthetic",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               },
               {
                 "type": "data",
                 "source": "derived",
                 "field": "sma50",
                 "asOf": "2026-08-19",
-                "value": 1019.8692,
+                "value": 1022.668,
                 "provenance": "SYNTHETIC",
                 "origin": "synthetic",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               }
             ]
           }
@@ -93,9 +108,9 @@
     },
     {
       "name": "volume",
-      "startedAt": "2026-10-14T14:45:49.483Z",
-      "endedAt": "2026-10-14T14:45:49.494Z",
-      "latencyMs": 11,
+      "startedAt": "2026-10-15T12:20:43.139Z",
+      "endedAt": "2026-10-15T12:20:43.144Z",
+      "latencyMs": 5,
       "payload": {
         "features": {
           "volumeZ": 0.6237615559488584,
@@ -120,7 +135,8 @@
                 "value": 0.6238,
                 "provenance": "SYNTHETIC",
                 "origin": "synthetic",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               }
             ]
           },
@@ -135,7 +151,8 @@
                 "value": 565.54,
                 "provenance": "SYNTHETIC",
                 "origin": "synthetic",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               }
             ]
           }
@@ -148,9 +165,9 @@
     },
     {
       "name": "sentiment",
-      "startedAt": "2026-10-14T14:45:49.483Z",
-      "endedAt": "2026-10-14T14:45:49.491Z",
-      "latencyMs": 8,
+      "startedAt": "2026-10-15T12:20:43.139Z",
+      "endedAt": "2026-10-15T12:20:43.144Z",
+      "latencyMs": 5,
       "payload": {
         "features": {
           "chunks": 4,
@@ -171,7 +188,8 @@
                 "score": 0.917,
                 "provenance": "SYNTHETIC",
                 "sourceUrl": null,
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               },
               {
                 "type": "doc",
@@ -181,7 +199,8 @@
                 "score": 0.299,
                 "provenance": "SYNTHETIC",
                 "sourceUrl": null,
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               },
               {
                 "type": "doc",
@@ -191,7 +210,8 @@
                 "score": 0.298,
                 "provenance": "SYNTHETIC",
                 "sourceUrl": null,
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               },
               {
                 "type": "doc",
@@ -201,7 +221,8 @@
                 "score": 0.274,
                 "provenance": "SYNTHETIC",
                 "sourceUrl": null,
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               }
             ]
           },
@@ -216,7 +237,8 @@
                 "score": 0.917,
                 "provenance": "SYNTHETIC",
                 "sourceUrl": null,
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               }
             ]
           }
@@ -274,36 +296,37 @@
     },
     {
       "name": "risk",
-      "startedAt": "2026-10-14T14:45:49.483Z",
-      "endedAt": "2026-10-14T14:45:49.487Z",
-      "latencyMs": 4,
+      "startedAt": "2026-10-15T12:20:43.139Z",
+      "endedAt": "2026-10-15T12:20:43.145Z",
+      "latencyMs": 6,
       "payload": {
         "features": {
-          "vol20": 0.00003454300231658543,
+          "vol20": 0.16607597786289896,
           "maxDrawdown60": -0.02488506245662736,
-          "beta60": 0.570798735084332
+          "beta60": 1.11363209161766
         },
         "label": "bullish",
-        "score": 0.9998618279907336,
-        "confidence": 0.8499309139953668,
+        "score": 0.33569608854840416,
+        "confidence": 0.5178480442742021,
         "claims": [
           {
-            "text": "Annualised 20-day volatility is +0.0%.",
+            "text": "Annualised 20-day volatility is +16.6%.",
             "citations": [
               {
                 "type": "data",
                 "source": "derived",
                 "field": "vol20",
                 "asOf": "2026-08-19",
-                "value": 0,
+                "value": 0.1661,
                 "provenance": "SYNTHETIC",
                 "origin": "synthetic",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               }
             ]
           },
           {
-            "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 0.57.",
+            "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 1.11.",
             "citations": [
               {
                 "type": "data",
@@ -313,17 +336,19 @@
                 "value": -0.0249,
                 "provenance": "SYNTHETIC",
                 "origin": "synthetic",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               },
               {
                 "type": "data",
                 "source": "derived",
                 "field": "beta60",
                 "asOf": "2026-08-19",
-                "value": 0.5708,
+                "value": 1.1136,
                 "provenance": "SYNTHETIC",
                 "origin": "synthetic",
-                "fetchedAt": null
+                "fetchedAt": null,
+                "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
               }
             ]
           }
@@ -336,18 +361,18 @@
     },
     {
       "name": "synthesizer",
-      "startedAt": "2026-10-14T14:45:49.503Z",
-      "endedAt": "2026-10-14T14:45:49.503Z",
-      "latencyMs": 0,
+      "startedAt": "2026-10-15T12:20:43.163Z",
+      "endedAt": "2026-10-15T12:20:43.164Z",
+      "latencyMs": 1,
       "payload": {
         "rows": [
           {
             "agent": "momentum",
             "w": 0.3,
-            "conf": 0.8169169894192622,
-            "effW": 0.24507509682577863,
-            "score": 0.9338339788385244,
-            "contrib": 0.22885945278305347,
+            "conf": 0.7789165925698858,
+            "effW": 0.2336749777709657,
+            "score": 0.8578331851397716,
+            "contrib": 0.20045415046873283,
             "excluded": false
           },
           {
@@ -371,30 +396,30 @@
           {
             "agent": "risk",
             "w": 0.2,
-            "conf": 0.8499309139953668,
-            "effW": 0.16998618279907338,
-            "score": 0.9998618279907336,
-            "contrib": 0.16996269546664852,
+            "conf": 0.5178480442742021,
+            "effW": 0.10356960885484041,
+            "score": 0.33569608854840416,
+            "contrib": 0.03476791258505809,
             "excluded": false
           }
         ],
         "formula": "composite = sum(effW * score) / sum(effW)",
-        "compositeScore": 0.4504613570880467,
-        "agreement": 0.3404139972746052,
-        "confidence": 0.48102610554799646,
-        "rawConfidence": 0.48102610554799646,
+        "compositeScore": 0.23433681816177404,
+        "agreement": 0.4253552852454304,
+        "confidence": 0.4477815280786224,
+        "rawConfidence": 0.4477815280786224,
         "calibratedConfidence": null,
         "uncertainty": null
       }
     },
     {
       "name": "personaliser",
-      "startedAt": "2026-10-14T14:45:49.503Z",
-      "endedAt": "2026-10-14T14:45:49.504Z",
+      "startedAt": "2026-10-15T12:20:43.164Z",
+      "endedAt": "2026-10-15T12:20:43.165Z",
       "latencyMs": 1,
       "payload": {
         "action": "accumulate",
-        "positionSizePct": 1.9,
+        "positionSizePct": 1.8,
         "rules": [
           "thresholds",
           "hhi",
@@ -404,9 +429,9 @@
     },
     {
       "name": "citation-enforcer",
-      "startedAt": "2026-10-14T14:45:49.504Z",
-      "endedAt": "2026-10-14T14:45:49.505Z",
-      "latencyMs": 1,
+      "startedAt": "2026-10-15T12:20:43.165Z",
+      "endedAt": "2026-10-15T12:20:43.184Z",
+      "latencyMs": 19,
       "payload": {
         "dropped": 0,
         "kept": 13
@@ -414,13 +439,18 @@
     },
     {
       "name": "recommendation",
-      "startedAt": "2026-10-14T14:45:49.505Z",
-      "endedAt": "2026-10-14T14:45:49.505Z",
+      "startedAt": "2026-10-15T12:20:43.184Z",
+      "endedAt": "2026-10-15T12:20:43.184Z",
       "latencyMs": 0,
       "payload": {
         "action": "accumulate",
         "label": "bullish",
-        "profileId": "moderate"
+        "profileId": "moderate",
+        "ticker": "INFY",
+        "asOf": "2026-08-19",
+        "dataMode": "synthetic",
+        "capturedAt": "2026-10-15T12:20:43.131Z",
+        "snapshotId": "run_423ac036_71756418-c4f4-4937-af69-2048985f409e"
       }
     }
   ],

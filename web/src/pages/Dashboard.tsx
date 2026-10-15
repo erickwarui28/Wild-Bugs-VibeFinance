@@ -60,6 +60,8 @@ export function Dashboard() {
           }}>Save research note</button> : null}
         </div>
         <p className="mt-3 text-xs text-[var(--text-muted)]">Runs keyless · provenance on every chip · Not financial advice</p>
+        {store.mode === "demo" ? <p className="mt-3 text-sm text-[var(--text-muted)]">Start with reproducible synthetic evidence and document citations. <button className="text-[var(--brand)] underline" onClick={() => store.setMode("live")}>Try Live</button> for available real-source data; coverage and loading times vary.</p> : null}
+        {store.loading ? <p role="status" className="mt-3 text-sm text-[var(--text-muted)]">{store.mode === "live" ? "Requesting available Live sources, then running specialist analysis. Source fetches can take up to 45 seconds; missing evidence will be disclosed." : "Preparing seeded evidence and cited specialist analysis…"} This is not a percentage-progress estimate. {store.mode === "live" ? <button className="text-[var(--brand)] underline" onClick={() => store.setMode("demo")}>Switch to fast Demo</button> : null}</p> : null}
         {synthesis ? (
           <p className="mt-2 text-sm text-[var(--text-muted)]">
             Analysis cut-off {synthesis.asOf} · {synthesis.agents.length} agents · mode {synthesis.dataMode}
@@ -88,7 +90,7 @@ export function Dashboard() {
         <div className="bento-layout">
           <div className="bento-column bento-summary">
             <SynthesisPanel synthesis={synthesis} />
-            <MetricsPanel metrics={store.metrics} />
+            <MetricsPanel synthesis={synthesis} timing={store.timing} />
           </div>
           <div className="bento-column bento-main">
             <PriceChart ticker={synthesis.ticker} asOf={synthesis.asOf} snapshotId={synthesis.snapshotId} />

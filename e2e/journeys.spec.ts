@@ -17,6 +17,26 @@ async function dashboard(page: Page) {
   await expect(page.getByText("Frozen evidence from this analysis", { exact: false })).toBeVisible();
 }
 
+test("first visits default to Demo, selected Live persists, and timings match the displayed run", async ({ browser }) => {
+  const context=await browser.newContext(); const page=await context.newPage();
+  try {
+    const analysis=page.waitForResponse(r=>r.url().endsWith('/api/analyze')&&r.ok());
+    const traced=page.waitForResponse(r=>r.url().includes('/api/trace/')&&r.ok());
+    await page.goto('/#/');
+    const result=await(await analysis).json(); expect(result.dataMode).toBe('synthetic');
+    await expect(page.getByRole('button',{name:'Demo',exact:true})).toHaveAttribute('aria-pressed','true');
+    const trace=await(await traced).json(); const steps=trace.steps;
+    const span=Math.max(...steps.map((s:{endedAt:string})=>Date.parse(s.endedAt)))-Math.min(...steps.map((s:{startedAt:string})=>Date.parse(s.startedAt)));
+    await expect(page.getByText('Server trace',{exact:true}).locator('..').getByText(`${span} ms`,{exact:true})).toBeVisible();
+    await expect(page.getByText('Browser request',{exact:true})).toBeVisible();
+    await expect(page.getByText('Fixture accuracy vs 30d',{exact:true})).toHaveCount(0);
+    await expect(page.getByText('Lower measured volatility',{exact:true})).toBeVisible();
+    const live=page.waitForResponse(r=>r.url().endsWith('/api/analyze')&&r.request().postDataJSON()?.mode==='live'&&r.ok());
+    await page.getByRole('button',{name:'Try Live',exact:true}).click();await live;
+    await page.reload();await expect(page.getByRole('button',{name:'Live',exact:true})).toHaveAttribute('aria-pressed','true');
+  } finally {await context.close();}
+});
+
 test("automatically analyzes current selections and refresh bypasses the cache", async ({ page }) => {
   await page.route("**/api/health", async route => {
     const response = await route.fetch(); const body = await response.json();
@@ -193,7 +213,8 @@ test("offline Live is honest and the bundled Demo remains available", async ({ p
   await page.getByRole("button", { name: "Demo", exact: true }).click();
   await expect(page.getByRole("button", { name: "Save research note", exact: true })).toBeVisible();
   await expect(page.getByText("API unreachable. The offline demo supports INFY for Rohan.", { exact: true })).toBeVisible();
-  await expect(page.getByText("Coverage metadata was not recorded",{exact:false})).toBeVisible();
+  await expect(page.getByRole("region",{name:"Source freshness and coverage"})).toBeVisible();
+  await expect(page.getByText("270 observations",{exact:true})).toBeVisible();
 });
 
 test("source coverage and glossary explain Demo evidence without another analysis",async({page})=>{

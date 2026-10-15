@@ -48,6 +48,8 @@ export function SynthesisPanel({ synthesis }: { synthesis: Synthesis }) {
           Concentration alert. Sector weight {(alert.sectorPct * 100).toFixed(0)}%. HHI {alert.hhiBefore.toFixed(2)} → {alert.hhiAfter.toFixed(2)}.
         </p>
       ) : null}
+      <p className="mt-3 text-xs text-[var(--text-muted)]">The signal label describes shared market evidence; the action applies this example investor's thresholds and risk rules. They need not match.</p>
+      <p className="mt-2 text-sm">{synthesis.personalised.rationale[0]?.text}{" "}{synthesis.personalised.rationale[0]?.citations.map((c, i) => <CitationChip key={`action-${i}`} citation={c} />)}</p>
       <p className="mt-3 text-xs text-[var(--text-muted)]">Score {synthesis.compositeScore.toFixed(2)} from confidence-weighted agent scores.</p>
       <Link className="mt-3 inline-block text-sm text-[var(--brand)]" to={`/trace/${synthesis.runId}`}>
         Open trace →

@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "generatedAt": "2026-10-15T06:37:47.751Z",
-  "baseRevision": "10aada4af02144b234f67669aca57968df3cee82",
+  "generatedAt": "2026-10-15T12:22:42.688Z",
+  "baseRevision": "a3be1f0fa3d11ba7216c8f1ea122e0c4a0a35a72",
   "workingTreeDirty": true,
-  "sourceHash": "a0e20a579e0aee68e59723c024e3423e8db2c26ef3f4e70456d97cfb29e898e6",
+  "sourceHash": "cadc10de6b305de40bb077797b8e2ce735c6963212faed5084ca544709a98b86",
   "nodeVersion": "v22.16.0",
   "platform": "win32",
   "seed": 42,
@@ -22,7 +22,7 @@
     "LT",
     "HINDUNILVR"
   ],
-  "inputHash": "216972a24822a85569b22ea9a2461bdc124559c373bc5356ea8ed8267b345330",
+  "inputHash": "0e2b90d0d405915686c7d1222fd91ca052011da4dae7027cd54da01bb18928ef",
   "note": "Synthetic fixture benchmark, not real-market validation. Confidence is an evidence heuristic, not a calibrated probability of profit.",
   "methodology": {
     "horizonTradingSessions": 30,
@@ -39,17 +39,17 @@
   },
   "total": 120,
   "eligible": 120,
-  "abstained": 23,
-  "coverage": 0.8083333333333333,
+  "abstained": 24,
+  "coverage": 0.8,
   "composite": {
-    "hitRate": 0.4845360824742268,
-    "n": 97,
-    "spread": 0.03472849614509724,
-    "brier": 0.304535635322593
+    "hitRate": 0.4791666666666667,
+    "n": 96,
+    "spread": 0.03341947259004991,
+    "brier": 0.3061439516135211
   },
   "baselines": {
-    "momentumOnly": 0.5051546391752577,
-    "alwaysBullish": 0.35051546391752575,
+    "momentumOnly": 0.5104166666666666,
+    "alwaysBullish": 0.34375,
     "neutralBrier": 0.25
   },
   "development": {

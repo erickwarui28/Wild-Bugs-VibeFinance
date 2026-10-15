@@ -14,7 +14,8 @@ describe("demo fixtures", () => {
     const trace = TraceResponse.parse(JSON.parse(readFileSync(path.join(dir, "trace-infy.json"), "utf8")));
     expect(demo.disclaimer).toContain("Not financial advice");
     expect(compare.results).toHaveLength(3);
-    expect(trace.steps[0]?.name).toBe("ingest");
+    expect(trace.steps[0]?.name).toBe("admission");
+    expect(trace.steps[1]?.name).toBe("ingest");
     expect(trace.steps[trace.steps.length - 1]?.name).toBe("recommendation");
   });
 });

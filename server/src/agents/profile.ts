@@ -58,7 +58,11 @@ export function personalise(
     origin: `profile:${profile.id}`,
   });
   const rationale = [
-    claim(reasonSentence(profile, action, ticker, Math.max(sectorPct, bankPct)), [action === "hold" && alert ? hhiCite : profileCite]),
+    claim(reasonSentence(profile, action, ticker, Math.max(sectorPct, bankPct), agg.compositeScore),
+      profile.riskTolerance === "moderate" && action === "accumulate" ? [profileCite,
+        dataCite({source:"derived",field:"compositeScore",asOf,value:agg.compositeScore,provenance,origin:"synthesizer"}),
+        dataCite({source:"derived",field:"profile.accumulateThreshold",asOf,value:0.1,provenance,origin:`profile:${profile.id}`})]
+      : [action === "hold" && alert ? hhiCite : profileCite]),
     claim(
       `Suggested size is ${size.toFixed(1)}% of the portfolio after the risk and concentration checks.`,
       [dataCite({ source: "derived", field: "positionSizePct", asOf, value: size, provenance, origin: `profile:${profile.id}` })],
@@ -144,8 +148,9 @@ function pickAction(
   return "avoid";
 }
 
-function reasonSentence(profile: Profile, action: string, ticker: string, sectorPct: number): string {
+function reasonSentence(profile: Profile, action: string, ticker: string, sectorPct: number, score: number): string {
   const verb = action.toUpperCase();
+  if (profile.riskTolerance === "moderate" && action === "accumulate") return `${verb}: score ${score.toFixed(3)} exceeds the moderate profile's 0.10 accumulation threshold; risk and concentration checks constrain the illustrative size. This is not a bullish-classification threshold.`;
   if (profile.id === "conservative" && sectorPct > 0.4) {
     return `${verb}: your portfolio is already ${(sectorPct * 100).toFixed(0)}% in one sector, so ${ticker} does not get a larger add.`;
   }

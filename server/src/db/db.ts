@@ -9,6 +9,7 @@ import { generateDocs } from "../data/filings.js";
 import { chunkText } from "../rag/chunk.js";
 import { embedLocal } from "../rag/embed.js";
 import { migrate } from "./migrations.js";
+import { upgradeSeedBars } from "./fixtures.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
@@ -46,6 +47,7 @@ export function getDb(): Database.Database {
       seeding = false;
     }
   }
+  upgradeSeedBars(instance, cfg.SEED);
   return instance;
 }
 

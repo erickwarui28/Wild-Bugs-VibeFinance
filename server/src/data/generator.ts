@@ -122,7 +122,7 @@ export function generateBars(seed: number, dates: string[]): Record<string, Inte
       });
       prev = close;
     }
-    imposeDemoPath(ticker, bars);
+    imposeDemoPath(ticker, bars, seed);
     for (let t = 0; t < bars.length; t++) {
       const future = bars[t + 30];
       const cur = bars[t];
@@ -137,15 +137,18 @@ function roundPrice(n: number): number {
   return Math.round(n * 100) / 100;
 }
 
-function imposeDemoPath(ticker: string, bars: InternalBar[]): void {
-  if (ticker === "INFY") imposeTrend(bars, ASOF_INDEX - 29, ASOF_INDEX, 0.006, "bull");
-  if (ticker === "SBIN") imposeTrend(bars, ASOF_INDEX - 29, ASOF_INDEX, -0.007, "bear");
+function imposeDemoPath(ticker: string, bars: InternalBar[], seed: number): void {
+  const rng = seedrandom(`${seed}:${ticker}:demo-trend-v2`);
+  if (ticker === "INFY") imposeTrend(bars, ASOF_INDEX - 29, ASOF_INDEX, 0.006, "bull", rng);
+  if (ticker === "SBIN") imposeTrend(bars, ASOF_INDEX - 29, ASOF_INDEX, -0.007, "bear", rng);
 }
 
-function imposeTrend(bars: InternalBar[], from: number, to: number, daily: number, regime: Regime): void {
+function imposeTrend(bars: InternalBar[], from: number, to: number, daily: number, regime: Regime, rng: () => number): void {
   for (let i = Math.max(1, from); i <= to && i < bars.length; i++) {
     const prev = bars[i - 1]?.close ?? 1;
-    const close = roundPrice(prev * (1 + daily));
+    // Both up and down sessions: a teaching trend, not a zero-variance ramp.
+    const change = daily + 0.014 * Math.sin((i - from) * 2.1) + (rng() - 0.5) * 0.006;
+    const close = roundPrice(prev * (1 + change));
     const bar = bars[i];
     if (!bar) continue;
     bar.open = roundPrice(prev);

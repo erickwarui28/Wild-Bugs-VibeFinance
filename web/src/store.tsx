@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useRef, useState, type R
 import { toast } from "sonner";
 import {
   fetchHealth,
-  fetchMetrics,
+  fetchTrace,
   fetchProfiles,
   fetchTickers,
   loadDemo,
@@ -13,14 +13,6 @@ import {
   type TickerRow,
 } from "./api";
 import type { Health } from "@vibefinance/shared";
-
-interface Metrics {
-  accuracy: { hitRate: number; n: number; spread: number };
-  latency: { p50: number; p95: number; max: number };
-  hhi: { before: number; after: number; effectiveHoldings: number };
-  brier: number;
-  uncitedDropped: number;
-}
 
 interface Store {
   offline: boolean;
@@ -32,7 +24,7 @@ interface Store {
   degrade: string[];
   mode: RunMode;
   synthesis: Synthesis | null;
-  metrics: Metrics | null;
+  timing: { runId: string; requestMs: number; traceMs: number | null } | null;
   loading: boolean;
   ready: boolean;
   setTicker: (t: string) => void;
@@ -50,14 +42,6 @@ export function useStore(): Store {
   return value;
 }
 
-const EMPTY_METRICS: Metrics = {
-  accuracy: { hitRate: 0, n: 0, spread: 0 },
-  latency: { p50: 0, p95: 0, max: 0 },
-  hhi: { before: 0, after: 0, effectiveHoldings: 0 },
-  brier: 0,
-  uncitedDropped: 0,
-};
-
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [offline, setOffline] = useState(false);
   const [health, setHealth] = useState<Health | null>(null);
@@ -66,9 +50,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [ticker, setTicker] = useState("INFY");
   const [profileId, setProfileId] = useState("moderate");
   const [degrade, setDegrade] = useState<string[]>([]);
-  const [mode, setModeState] = useState<RunMode>(() => (localStorage.getItem("vf-run-mode") === "demo" ? "demo" : "live"));
+  const [mode, setModeState] = useState<RunMode>(() => {
+    try { return localStorage.getItem("vf-run-mode") === "live" ? "live" : "demo"; }
+    catch { return "demo"; }
+  });
   const [synthesis, setSynthesis] = useState<Synthesis | null>(null);
-  const [metrics, setMetrics] = useState<Metrics | null>(null);
+  const [timing, setTiming] = useState<Store["timing"]>(null);
   const [loading, setLoading] = useState(true);
   const [ready, setReady] = useState(false);
   const runGen = useRef(0);
@@ -97,12 +84,17 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         setSynthesis(demo);
         return;
       }
+      const requestStart = performance.now();
       const result = await postAnalyze(nextTicker, nextProfile, degrade, nextMode, { signal: controller.signal, refresh: opts?.refresh });
+      const requestMs = performance.now() - requestStart;
       if (seq !== runGen.current) return;
       setSynthesis(result);
-      const nextMetrics = await fetchMetrics(controller.signal).catch(() => EMPTY_METRICS);
-      if (seq !== runGen.current) return;
-      setMetrics(nextMetrics);
+      setTiming({ runId: result.runId, requestMs, traceMs: null });
+      void fetchTrace(result.runId, controller.signal).then(steps => {
+        if (seq !== runGen.current || !steps.length) return;
+        const traceMs = Math.max(...steps.map(s => Date.parse(s.endedAt))) - Math.min(...steps.map(s => Date.parse(s.startedAt)));
+        setTiming({ runId: result.runId, requestMs, traceMs });
+      }).catch(() => { /* An unavailable trace is not a zero-duration execution. */ });
     } catch (err) {
       if (seq !== runGen.current || controller.signal.aborted) return;
       if (err instanceof Error && err.message === "rate") {
@@ -162,7 +154,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   function setMode(next: RunMode) {
     if (next === mode) return;
     activeRun.current?.abort(); runGen.current++;
-    localStorage.setItem("vf-run-mode", next);
+    try { localStorage.setItem("vf-run-mode", next); } catch { /* Keep the selection in memory. */ }
     setModeState(next);
     setSynthesis(null);
     setReady(false);
@@ -175,7 +167,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     runGen.current += 1;
     setTicker(next);
     setSynthesis(null);
-    setMetrics(null);
     setLoading(false);
   }
 
@@ -185,13 +176,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     runGen.current += 1;
     setProfileId(next);
     setSynthesis(null);
-    setMetrics(null);
     setLoading(false);
   }
 
   const value = useMemo(
-    () => ({ offline, health, tickers, profiles, ticker, profileId, degrade, mode, synthesis, metrics, loading, ready, setTicker: selectTicker, setProfileId: selectProfile, toggleDegrade, setMode, run, cancelRun }),
-    [offline, health, tickers, profiles, ticker, profileId, degrade, mode, synthesis, metrics, loading, ready],
+    () => ({ offline, health, tickers, profiles, ticker, profileId, degrade, mode, synthesis, timing, loading, ready, setTicker: selectTicker, setProfileId: selectProfile, toggleDegrade, setMode, run, cancelRun }),
+    [offline, health, tickers, profiles, ticker, profileId, degrade, mode, synthesis, timing, loading, ready],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
