@@ -1,0 +1,1355 @@
+{
+  "runId": "run_3ad6a229_048065c8-5fa4-44c9-a623-d109a01c5925",
+  "results": [
+    {
+      "runId": "run_3ad6a229_048065c8-5fa4-44c9-a623-d109a01c5925",
+      "ticker": "INFY",
+      "asOf": "2026-08-19",
+      "profileId": "conservative",
+      "compositeLabel": "bullish",
+      "compositeScore": 0.4504613570880467,
+      "confidence": 0.48102610554799646,
+      "agreement": 0.3404139972746052,
+      "disagreements": [
+        {
+          "agents": [
+            "momentum",
+            "sentiment"
+          ],
+          "explanation": {
+            "text": "Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "momentum.score",
+                "asOf": "2026-08-19",
+                "value": 0.9338,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "sentiment.score",
+                "asOf": "2026-08-19",
+                "value": -0.5,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              }
+            ]
+          }
+        },
+        {
+          "agents": [
+            "risk",
+            "sentiment"
+          ],
+          "explanation": {
+            "text": "Risk is bullish (score 1.00) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "risk.score",
+                "asOf": "2026-08-19",
+                "value": 0.9999,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "sentiment.score",
+                "asOf": "2026-08-19",
+                "value": -0.5,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              }
+            ]
+          }
+        }
+      ],
+      "summary": [
+        {
+          "text": "The combined read leans positive (score 0.45).",
+          "citations": [
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "compositeScore",
+              "asOf": "2026-08-19",
+              "value": 0.4505,
+              "provenance": "SYNTHETIC",
+              "origin": "confidence-weighted-agent-scores",
+              "fetchedAt": null
+            }
+          ]
+        },
+        {
+          "text": "Not every agent agrees. Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+          "citations": [
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "momentum.score",
+              "asOf": "2026-08-19",
+              "value": 0.9338,
+              "provenance": "SYNTHETIC",
+              "origin": "orchestrator",
+              "fetchedAt": null
+            },
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "sentiment.score",
+              "asOf": "2026-08-19",
+              "value": -0.5,
+              "provenance": "SYNTHETIC",
+              "origin": "orchestrator",
+              "fetchedAt": null
+            }
+          ]
+        },
+        {
+          "text": "A higher-risk investor might add a small amount.",
+          "citations": [
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "compositeScore",
+              "asOf": "2026-08-19",
+              "value": 0.4505,
+              "provenance": "SYNTHETIC",
+              "origin": "confidence-weighted-agent-scores",
+              "fetchedAt": null
+            }
+          ]
+        }
+      ],
+      "personalised": {
+        "profileId": "conservative",
+        "riskTolerance": "conservative",
+        "action": "hold",
+        "positionSizePct": 0.5,
+        "concentrationAlert": {
+          "hhiBefore": 0.15359999999999996,
+          "hhiAfter": 0.15228757119979947,
+          "sectorPct": 0.5942826902384006,
+          "alert": true
+        },
+        "behaviourNudges": [
+          {
+            "text": "Observed 60-day drawdown is -2.5%. Review your risk plan before reacting to recent prices.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "maxDrawdown60",
+                "asOf": "2026-08-19",
+                "value": -0.0249,
+                "provenance": "SYNTHETIC",
+                "origin": "profile:conservative",
+                "fetchedAt": null
+              }
+            ]
+          }
+        ],
+        "rationale": [
+          {
+            "text": "HOLD: your portfolio is already 59% in one sector, so INFY does not get a larger add.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "profile.sectorWeight",
+                "asOf": "2026-08-19",
+                "value": 0.5943,
+                "provenance": "SYNTHETIC",
+                "origin": "profile:conservative",
+                "fetchedAt": null
+              }
+            ]
+          },
+          {
+            "text": "Suggested size is 0.5% of the portfolio after the risk and concentration checks.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "positionSizePct",
+                "asOf": "2026-08-19",
+                "value": 0.5291,
+                "provenance": "SYNTHETIC",
+                "origin": "profile:conservative",
+                "fetchedAt": null
+              }
+            ]
+          }
+        ]
+      },
+      "agents": [
+        {
+          "agent": "momentum",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "bullish",
+          "score": 0.9338339788385244,
+          "confidence": 0.8169169894192622,
+          "claims": [
+            {
+              "text": "The 20-day return is +12.7% and RSI is 100.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "ohlcv",
+                  "field": "ret20",
+                  "asOf": "2026-08-19",
+                  "value": 0.1271,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                },
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "rsi14",
+                  "asOf": "2026-08-19",
+                  "value": 100,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "The 20-day average (1110.3) is above the 50-day average (1019.9).",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "sma20",
+                  "asOf": "2026-08-19",
+                  "value": 1110.3475,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                },
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "sma50",
+                  "asOf": "2026-08-19",
+                  "value": 1019.8692,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "ret20": 0.12709546793586202,
+            "rsi14": 100,
+            "sma20": 1110.3474999999999,
+            "sma50": 1019.8692000000001,
+            "macd": 1,
+            "zRet20": 1.7750927732495165
+          },
+          "degraded": [],
+          "latencyMs": 9,
+          "mode": "mock"
+        },
+        {
+          "agent": "volume",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "neutral",
+          "score": -0.07535963061374451,
+          "confidence": 0.38767981530687223,
+          "claims": [
+            {
+              "text": "Volume is inside its recent range (z 0.62).",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "volume",
+                  "field": "volumeZ20",
+                  "asOf": "2026-08-19",
+                  "value": 0.6238,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "Five-day IT FII net flow is 566 crore. That series is synthetic.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "flows",
+                  "field": "fii5.IT",
+                  "asOf": "2026-08-19",
+                  "value": 565.54,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "volumeZ": 0.6237615559488584,
+            "volScore": 0,
+            "fii5": 565.54,
+            "dii5": -276.35,
+            "fiiZ5": -0.513383816195592,
+            "flowScore": -0.2511987687124817
+          },
+          "degraded": [],
+          "latencyMs": 7,
+          "mode": "mock"
+        },
+        {
+          "agent": "sentiment",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "bearish",
+          "score": -0.5,
+          "confidence": 0.6,
+          "claims": [
+            {
+              "text": "Filings retrieved for INFY read negative. The closest passage is from INFY Q2 earnings call transcript.",
+              "citations": [
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c0",
+                  "snippet": "[SYNTHETIC DOCUMENT – for demo only] The call disclosed a guidance cut, a margin miss, weaker demand, and a decline versus last year. Management flagged concern about the outlook. Guidance was cut. The tone on the call was cautious and the ",
+                  "score": 0.917,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                },
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-R",
+                  "chunkId": "DOC-INFY-Q2-R#c0",
+                  "snippet": "[SYNTHETIC DOCUMENT – for demo only] Volumes were stable and management kept annual guidance flat. Margins moved within the usual seasonal range. This synthetic note concerns Infosys (INFY) and exists only so a demo can retrieve and cite a ",
+                  "score": 0.299,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                },
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c3",
+                  "snippet": "generator, not taken from a live filing. Shareholders were reminded that past quarterly patterns in this fixture are generated, not observed in the market. Seeded illustration only: revenue growth 6.9 percent and a margin move of 57 basis p",
+                  "score": 0.298,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                },
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c4",
+                  "snippet": "filing. The board reviewed ordinary-course capital expenditure and confirmed that no unpublished price-sensitive information is being withheld beyond this note. Seeded illustration only: revenue growth 5.1 percent and a margin move of 35 ba",
+                  "score": 0.274,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "A retrieved passage mentions a guidance cut.",
+              "citations": [
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c0",
+                  "snippet": "[SYNTHETIC DOCUMENT – for demo only] The call disclosed a guidance cut, a margin miss, weaker demand, and a decline versus last year. Management flagged concern about the outlook. Guidance was cut. The tone on the call was cautious and the ",
+                  "score": 0.917,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "chunks": 4,
+            "lexicon": -0.5
+          },
+          "degraded": [],
+          "latencyMs": 4,
+          "mode": "mock"
+        },
+        {
+          "agent": "risk",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "bullish",
+          "score": 0.9998618279907336,
+          "confidence": 0.8499309139953668,
+          "claims": [
+            {
+              "text": "Annualised 20-day volatility is +0.0%.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "vol20",
+                  "asOf": "2026-08-19",
+                  "value": 0,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 0.57.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "maxDrawdown60",
+                  "asOf": "2026-08-19",
+                  "value": -0.0249,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                },
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "beta60",
+                  "asOf": "2026-08-19",
+                  "value": 0.5708,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "vol20": 0.00003454300231658543,
+            "maxDrawdown60": -0.02488506245662736,
+            "beta60": 0.570798735084332
+          },
+          "degraded": [],
+          "latencyMs": 2,
+          "mode": "mock"
+        }
+      ],
+      "degraded": [],
+      "disclaimer": "Not financial advice. Demonstration only.",
+      "dataMode": "synthetic",
+      "provenance": "SYNTHETIC"
+    },
+    {
+      "runId": "run_3ad6a229_048065c8-5fa4-44c9-a623-d109a01c5925",
+      "ticker": "INFY",
+      "asOf": "2026-08-19",
+      "profileId": "moderate",
+      "compositeLabel": "bullish",
+      "compositeScore": 0.4504613570880467,
+      "confidence": 0.48102610554799646,
+      "agreement": 0.3404139972746052,
+      "disagreements": [
+        {
+          "agents": [
+            "momentum",
+            "sentiment"
+          ],
+          "explanation": {
+            "text": "Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "momentum.score",
+                "asOf": "2026-08-19",
+                "value": 0.9338,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "sentiment.score",
+                "asOf": "2026-08-19",
+                "value": -0.5,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              }
+            ]
+          }
+        },
+        {
+          "agents": [
+            "risk",
+            "sentiment"
+          ],
+          "explanation": {
+            "text": "Risk is bullish (score 1.00) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "risk.score",
+                "asOf": "2026-08-19",
+                "value": 0.9999,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "sentiment.score",
+                "asOf": "2026-08-19",
+                "value": -0.5,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              }
+            ]
+          }
+        }
+      ],
+      "summary": [
+        {
+          "text": "The combined read leans positive (score 0.45).",
+          "citations": [
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "compositeScore",
+              "asOf": "2026-08-19",
+              "value": 0.4505,
+              "provenance": "SYNTHETIC",
+              "origin": "confidence-weighted-agent-scores",
+              "fetchedAt": null
+            }
+          ]
+        },
+        {
+          "text": "Not every agent agrees. Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+          "citations": [
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "momentum.score",
+              "asOf": "2026-08-19",
+              "value": 0.9338,
+              "provenance": "SYNTHETIC",
+              "origin": "orchestrator",
+              "fetchedAt": null
+            },
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "sentiment.score",
+              "asOf": "2026-08-19",
+              "value": -0.5,
+              "provenance": "SYNTHETIC",
+              "origin": "orchestrator",
+              "fetchedAt": null
+            }
+          ]
+        },
+        {
+          "text": "A higher-risk investor might add a small amount.",
+          "citations": [
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "compositeScore",
+              "asOf": "2026-08-19",
+              "value": 0.4505,
+              "provenance": "SYNTHETIC",
+              "origin": "confidence-weighted-agent-scores",
+              "fetchedAt": null
+            }
+          ]
+        }
+      ],
+      "personalised": {
+        "profileId": "moderate",
+        "riskTolerance": "moderate",
+        "action": "accumulate",
+        "positionSizePct": 1.9,
+        "concentrationAlert": {
+          "hhiBefore": 0.16720000000000002,
+          "hhiAfter": 0.1672300777429969,
+          "sectorPct": 0.3328369144326342,
+          "alert": false
+        },
+        "behaviourNudges": [
+          {
+            "text": "The recent rally is easy to overweight. Check the filing before adding just because price went up.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "profile.riskTolerance",
+                "asOf": "2026-08-19",
+                "value": 1,
+                "provenance": "SYNTHETIC",
+                "origin": "profile:moderate",
+                "fetchedAt": null
+              }
+            ]
+          }
+        ],
+        "rationale": [
+          {
+            "text": "ACCUMULATE: this matches a moderate investor looking at INFY.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "profile.riskTolerance",
+                "asOf": "2026-08-19",
+                "value": 1,
+                "provenance": "SYNTHETIC",
+                "origin": "profile:moderate",
+                "fetchedAt": null
+              }
+            ]
+          },
+          {
+            "text": "Suggested size is 1.9% of the portfolio after the risk and concentration checks.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "positionSizePct",
+                "asOf": "2026-08-19",
+                "value": 1.9241,
+                "provenance": "SYNTHETIC",
+                "origin": "profile:moderate",
+                "fetchedAt": null
+              }
+            ]
+          }
+        ]
+      },
+      "agents": [
+        {
+          "agent": "momentum",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "bullish",
+          "score": 0.9338339788385244,
+          "confidence": 0.8169169894192622,
+          "claims": [
+            {
+              "text": "The 20-day return is +12.7% and RSI is 100.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "ohlcv",
+                  "field": "ret20",
+                  "asOf": "2026-08-19",
+                  "value": 0.1271,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                },
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "rsi14",
+                  "asOf": "2026-08-19",
+                  "value": 100,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "The 20-day average (1110.3) is above the 50-day average (1019.9).",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "sma20",
+                  "asOf": "2026-08-19",
+                  "value": 1110.3475,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                },
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "sma50",
+                  "asOf": "2026-08-19",
+                  "value": 1019.8692,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "ret20": 0.12709546793586202,
+            "rsi14": 100,
+            "sma20": 1110.3474999999999,
+            "sma50": 1019.8692000000001,
+            "macd": 1,
+            "zRet20": 1.7750927732495165
+          },
+          "degraded": [],
+          "latencyMs": 9,
+          "mode": "mock"
+        },
+        {
+          "agent": "volume",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "neutral",
+          "score": -0.07535963061374451,
+          "confidence": 0.38767981530687223,
+          "claims": [
+            {
+              "text": "Volume is inside its recent range (z 0.62).",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "volume",
+                  "field": "volumeZ20",
+                  "asOf": "2026-08-19",
+                  "value": 0.6238,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "Five-day IT FII net flow is 566 crore. That series is synthetic.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "flows",
+                  "field": "fii5.IT",
+                  "asOf": "2026-08-19",
+                  "value": 565.54,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "volumeZ": 0.6237615559488584,
+            "volScore": 0,
+            "fii5": 565.54,
+            "dii5": -276.35,
+            "fiiZ5": -0.513383816195592,
+            "flowScore": -0.2511987687124817
+          },
+          "degraded": [],
+          "latencyMs": 7,
+          "mode": "mock"
+        },
+        {
+          "agent": "sentiment",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "bearish",
+          "score": -0.5,
+          "confidence": 0.6,
+          "claims": [
+            {
+              "text": "Filings retrieved for INFY read negative. The closest passage is from INFY Q2 earnings call transcript.",
+              "citations": [
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c0",
+                  "snippet": "[SYNTHETIC DOCUMENT – for demo only] The call disclosed a guidance cut, a margin miss, weaker demand, and a decline versus last year. Management flagged concern about the outlook. Guidance was cut. The tone on the call was cautious and the ",
+                  "score": 0.917,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                },
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-R",
+                  "chunkId": "DOC-INFY-Q2-R#c0",
+                  "snippet": "[SYNTHETIC DOCUMENT – for demo only] Volumes were stable and management kept annual guidance flat. Margins moved within the usual seasonal range. This synthetic note concerns Infosys (INFY) and exists only so a demo can retrieve and cite a ",
+                  "score": 0.299,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                },
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c3",
+                  "snippet": "generator, not taken from a live filing. Shareholders were reminded that past quarterly patterns in this fixture are generated, not observed in the market. Seeded illustration only: revenue growth 6.9 percent and a margin move of 57 basis p",
+                  "score": 0.298,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                },
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c4",
+                  "snippet": "filing. The board reviewed ordinary-course capital expenditure and confirmed that no unpublished price-sensitive information is being withheld beyond this note. Seeded illustration only: revenue growth 5.1 percent and a margin move of 35 ba",
+                  "score": 0.274,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "A retrieved passage mentions a guidance cut.",
+              "citations": [
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c0",
+                  "snippet": "[SYNTHETIC DOCUMENT – for demo only] The call disclosed a guidance cut, a margin miss, weaker demand, and a decline versus last year. Management flagged concern about the outlook. Guidance was cut. The tone on the call was cautious and the ",
+                  "score": 0.917,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "chunks": 4,
+            "lexicon": -0.5
+          },
+          "degraded": [],
+          "latencyMs": 4,
+          "mode": "mock"
+        },
+        {
+          "agent": "risk",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "bullish",
+          "score": 0.9998618279907336,
+          "confidence": 0.8499309139953668,
+          "claims": [
+            {
+              "text": "Annualised 20-day volatility is +0.0%.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "vol20",
+                  "asOf": "2026-08-19",
+                  "value": 0,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 0.57.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "maxDrawdown60",
+                  "asOf": "2026-08-19",
+                  "value": -0.0249,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                },
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "beta60",
+                  "asOf": "2026-08-19",
+                  "value": 0.5708,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "vol20": 0.00003454300231658543,
+            "maxDrawdown60": -0.02488506245662736,
+            "beta60": 0.570798735084332
+          },
+          "degraded": [],
+          "latencyMs": 2,
+          "mode": "mock"
+        }
+      ],
+      "degraded": [],
+      "disclaimer": "Not financial advice. Demonstration only.",
+      "dataMode": "synthetic",
+      "provenance": "SYNTHETIC"
+    },
+    {
+      "runId": "run_3ad6a229_048065c8-5fa4-44c9-a623-d109a01c5925",
+      "ticker": "INFY",
+      "asOf": "2026-08-19",
+      "profileId": "aggressive",
+      "compositeLabel": "bullish",
+      "compositeScore": 0.4504613570880467,
+      "confidence": 0.48102610554799646,
+      "agreement": 0.3404139972746052,
+      "disagreements": [
+        {
+          "agents": [
+            "momentum",
+            "sentiment"
+          ],
+          "explanation": {
+            "text": "Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "momentum.score",
+                "asOf": "2026-08-19",
+                "value": 0.9338,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "sentiment.score",
+                "asOf": "2026-08-19",
+                "value": -0.5,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              }
+            ]
+          }
+        },
+        {
+          "agents": [
+            "risk",
+            "sentiment"
+          ],
+          "explanation": {
+            "text": "Risk is bullish (score 1.00) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "risk.score",
+                "asOf": "2026-08-19",
+                "value": 0.9999,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "sentiment.score",
+                "asOf": "2026-08-19",
+                "value": -0.5,
+                "provenance": "SYNTHETIC",
+                "origin": "orchestrator",
+                "fetchedAt": null
+              }
+            ]
+          }
+        }
+      ],
+      "summary": [
+        {
+          "text": "The combined read leans positive (score 0.45).",
+          "citations": [
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "compositeScore",
+              "asOf": "2026-08-19",
+              "value": 0.4505,
+              "provenance": "SYNTHETIC",
+              "origin": "confidence-weighted-agent-scores",
+              "fetchedAt": null
+            }
+          ]
+        },
+        {
+          "text": "Not every agent agrees. Momentum is bullish (score 0.93) while Sentiment is bearish (score -0.50). Composite confidence is reduced while those signals conflict.",
+          "citations": [
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "momentum.score",
+              "asOf": "2026-08-19",
+              "value": 0.9338,
+              "provenance": "SYNTHETIC",
+              "origin": "orchestrator",
+              "fetchedAt": null
+            },
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "sentiment.score",
+              "asOf": "2026-08-19",
+              "value": -0.5,
+              "provenance": "SYNTHETIC",
+              "origin": "orchestrator",
+              "fetchedAt": null
+            }
+          ]
+        },
+        {
+          "text": "A higher-risk investor might add a small amount.",
+          "citations": [
+            {
+              "type": "data",
+              "source": "derived",
+              "field": "compositeScore",
+              "asOf": "2026-08-19",
+              "value": 0.4505,
+              "provenance": "SYNTHETIC",
+              "origin": "confidence-weighted-agent-scores",
+              "fetchedAt": null
+            }
+          ]
+        }
+      ],
+      "personalised": {
+        "profileId": "aggressive",
+        "riskTolerance": "aggressive",
+        "action": "buy",
+        "positionSizePct": 1.9,
+        "concentrationAlert": {
+          "hhiBefore": 0.265,
+          "hhiAfter": 0.27744005033952857,
+          "sectorPct": 0.6130299874664994,
+          "alert": true
+        },
+        "behaviourNudges": [],
+        "rationale": [
+          {
+            "text": "BUY: the combined score clears your lower bar, with a cap so INFY does not become the whole portfolio.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "profile.riskTolerance",
+                "asOf": "2026-08-19",
+                "value": 2,
+                "provenance": "SYNTHETIC",
+                "origin": "profile:aggressive",
+                "fetchedAt": null
+              }
+            ]
+          },
+          {
+            "text": "Suggested size is 1.9% of the portfolio after the risk and concentration checks.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "positionSizePct",
+                "asOf": "2026-08-19",
+                "value": 1.852,
+                "provenance": "SYNTHETIC",
+                "origin": "profile:aggressive",
+                "fetchedAt": null
+              }
+            ]
+          }
+        ]
+      },
+      "agents": [
+        {
+          "agent": "momentum",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "bullish",
+          "score": 0.9338339788385244,
+          "confidence": 0.8169169894192622,
+          "claims": [
+            {
+              "text": "The 20-day return is +12.7% and RSI is 100.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "ohlcv",
+                  "field": "ret20",
+                  "asOf": "2026-08-19",
+                  "value": 0.1271,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                },
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "rsi14",
+                  "asOf": "2026-08-19",
+                  "value": 100,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "The 20-day average (1110.3) is above the 50-day average (1019.9).",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "sma20",
+                  "asOf": "2026-08-19",
+                  "value": 1110.3475,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                },
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "sma50",
+                  "asOf": "2026-08-19",
+                  "value": 1019.8692,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "ret20": 0.12709546793586202,
+            "rsi14": 100,
+            "sma20": 1110.3474999999999,
+            "sma50": 1019.8692000000001,
+            "macd": 1,
+            "zRet20": 1.7750927732495165
+          },
+          "degraded": [],
+          "latencyMs": 9,
+          "mode": "mock"
+        },
+        {
+          "agent": "volume",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "neutral",
+          "score": -0.07535963061374451,
+          "confidence": 0.38767981530687223,
+          "claims": [
+            {
+              "text": "Volume is inside its recent range (z 0.62).",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "volume",
+                  "field": "volumeZ20",
+                  "asOf": "2026-08-19",
+                  "value": 0.6238,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "Five-day IT FII net flow is 566 crore. That series is synthetic.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "flows",
+                  "field": "fii5.IT",
+                  "asOf": "2026-08-19",
+                  "value": 565.54,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "volumeZ": 0.6237615559488584,
+            "volScore": 0,
+            "fii5": 565.54,
+            "dii5": -276.35,
+            "fiiZ5": -0.513383816195592,
+            "flowScore": -0.2511987687124817
+          },
+          "degraded": [],
+          "latencyMs": 7,
+          "mode": "mock"
+        },
+        {
+          "agent": "sentiment",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "bearish",
+          "score": -0.5,
+          "confidence": 0.6,
+          "claims": [
+            {
+              "text": "Filings retrieved for INFY read negative. The closest passage is from INFY Q2 earnings call transcript.",
+              "citations": [
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c0",
+                  "snippet": "[SYNTHETIC DOCUMENT – for demo only] The call disclosed a guidance cut, a margin miss, weaker demand, and a decline versus last year. Management flagged concern about the outlook. Guidance was cut. The tone on the call was cautious and the ",
+                  "score": 0.917,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                },
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-R",
+                  "chunkId": "DOC-INFY-Q2-R#c0",
+                  "snippet": "[SYNTHETIC DOCUMENT – for demo only] Volumes were stable and management kept annual guidance flat. Margins moved within the usual seasonal range. This synthetic note concerns Infosys (INFY) and exists only so a demo can retrieve and cite a ",
+                  "score": 0.299,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                },
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c3",
+                  "snippet": "generator, not taken from a live filing. Shareholders were reminded that past quarterly patterns in this fixture are generated, not observed in the market. Seeded illustration only: revenue growth 6.9 percent and a margin move of 57 basis p",
+                  "score": 0.298,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                },
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c4",
+                  "snippet": "filing. The board reviewed ordinary-course capital expenditure and confirmed that no unpublished price-sensitive information is being withheld beyond this note. Seeded illustration only: revenue growth 5.1 percent and a margin move of 35 ba",
+                  "score": 0.274,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "A retrieved passage mentions a guidance cut.",
+              "citations": [
+                {
+                  "type": "doc",
+                  "docId": "DOC-INFY-Q2-T",
+                  "chunkId": "DOC-INFY-Q2-T#c0",
+                  "snippet": "[SYNTHETIC DOCUMENT – for demo only] The call disclosed a guidance cut, a margin miss, weaker demand, and a decline versus last year. Management flagged concern about the outlook. Guidance was cut. The tone on the call was cautious and the ",
+                  "score": 0.917,
+                  "provenance": "SYNTHETIC",
+                  "sourceUrl": null,
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "chunks": 4,
+            "lexicon": -0.5
+          },
+          "degraded": [],
+          "latencyMs": 4,
+          "mode": "mock"
+        },
+        {
+          "agent": "risk",
+          "ticker": "INFY",
+          "asOf": "2026-08-19",
+          "label": "bullish",
+          "score": 0.9998618279907336,
+          "confidence": 0.8499309139953668,
+          "claims": [
+            {
+              "text": "Annualised 20-day volatility is +0.0%.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "vol20",
+                  "asOf": "2026-08-19",
+                  "value": 0,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            },
+            {
+              "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 0.57.",
+              "citations": [
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "maxDrawdown60",
+                  "asOf": "2026-08-19",
+                  "value": -0.0249,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                },
+                {
+                  "type": "data",
+                  "source": "derived",
+                  "field": "beta60",
+                  "asOf": "2026-08-19",
+                  "value": 0.5708,
+                  "provenance": "SYNTHETIC",
+                  "origin": "synthetic",
+                  "fetchedAt": null
+                }
+              ]
+            }
+          ],
+          "features": {
+            "vol20": 0.00003454300231658543,
+            "maxDrawdown60": -0.02488506245662736,
+            "beta60": 0.570798735084332
+          },
+          "degraded": [],
+          "latencyMs": 2,
+          "mode": "mock"
+        }
+      ],
+      "degraded": [],
+      "disclaimer": "Not financial advice. Demonstration only.",
+      "dataMode": "synthetic",
+      "provenance": "SYNTHETIC"
+    }
+  ],
+  "disclaimer": "Not financial advice. Demonstration only."
+}

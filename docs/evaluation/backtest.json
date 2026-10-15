@@ -1,0 +1,114 @@
+{
+  "version": 2,
+  "generatedAt": "2026-10-15T06:37:47.751Z",
+  "baseRevision": "10aada4af02144b234f67669aca57968df3cee82",
+  "workingTreeDirty": true,
+  "sourceHash": "a0e20a579e0aee68e59723c024e3423e8db2c26ef3f4e70456d97cfb29e898e6",
+  "nodeVersion": "v22.16.0",
+  "platform": "win32",
+  "seed": 42,
+  "provider": "mock",
+  "dataMode": "synthetic",
+  "profile": "moderate",
+  "tickers": [
+    "RELIANCE",
+    "TCS",
+    "INFY",
+    "HDFCBANK",
+    "ICICIBANK",
+    "ITC",
+    "SBIN",
+    "BHARTIARTL",
+    "LT",
+    "HINDUNILVR"
+  ],
+  "inputHash": "216972a24822a85569b22ea9a2461bdc124559c373bc5356ea8ed8267b345330",
+  "note": "Synthetic fixture benchmark, not real-market validation. Confidence is an evidence heuristic, not a calibrated probability of profit.",
+  "methodology": {
+    "horizonTradingSessions": 30,
+    "strideTradingSessions": 5,
+    "warmupTradingSessions": 60,
+    "developmentEnd": "2026-04-10",
+    "holdoutStart": "2026-05-25",
+    "holdoutEnd": "2026-08-19",
+    "purgeTradingSessions": 30,
+    "fittedParameters": false,
+    "calibrated": false,
+    "scoring": "Non-neutral composite signals with nonzero forward returns. Baselines use exactly the same rows; zero momentum receives half credit. Coverage reports abstentions. Brier uses a heuristic upward-probability transform; no calibration claim.",
+    "limitations": "Designed synthetic scenarios, not an untouched external dataset. Five-session samples have overlapping 30-session labels and correlated tickers; no independent-sample confidence intervals. No fees, slippage, execution or strategy P&L. Baseline thresholds were not optimized on this holdout."
+  },
+  "total": 120,
+  "eligible": 120,
+  "abstained": 23,
+  "coverage": 0.8083333333333333,
+  "composite": {
+    "hitRate": 0.4845360824742268,
+    "n": 97,
+    "spread": 0.03472849614509724,
+    "brier": 0.304535635322593
+  },
+  "baselines": {
+    "momentumOnly": 0.5051546391752577,
+    "alwaysBullish": 0.35051546391752575,
+    "neutralBrier": 0.25
+  },
+  "development": {
+    "total": 240,
+    "eligible": 240,
+    "abstained": 64,
+    "coverage": 0.7333333333333333,
+    "composite": {
+      "hitRate": 0.4715909090909091,
+      "n": 176,
+      "spread": -0.004078474307135378,
+      "brier": 0.29050017985148996
+    },
+    "baselines": {
+      "momentumOnly": 0.4943181818181818,
+      "alwaysBullish": 0.375,
+      "neutralBrier": 0.25
+    }
+  },
+  "retrieval": {
+    "note": "Three curated synthetic planted-passage checks of the agent's fixed-query top-four retrieval. Not a representative relevance benchmark or semantic-understanding score.",
+    "checks": [
+      {
+        "ticker": "INFY",
+        "expected": "guidance cut",
+        "k": 4,
+        "relevantPassageFound": true,
+        "allCitationsResolvable": true,
+        "noFutureSources": true,
+        "retrievedDocuments": [
+          "DOC-INFY-Q2-T",
+          "DOC-INFY-Q2-R"
+        ]
+      },
+      {
+        "ticker": "ITC",
+        "expected": "pledge disclosure",
+        "k": 4,
+        "relevantPassageFound": true,
+        "allCitationsResolvable": true,
+        "noFutureSources": true,
+        "retrievedDocuments": [
+          "DOC-ITC-PLG-1",
+          "DOC-ITC-Q2-R"
+        ]
+      },
+      {
+        "ticker": "SBIN",
+        "expected": "earnings beat",
+        "k": 4,
+        "relevantPassageFound": true,
+        "allCitationsResolvable": true,
+        "noFutureSources": true,
+        "retrievedDocuments": [
+          "DOC-SBIN-Q2-R",
+          "DOC-SBIN-Q2-T"
+        ]
+      }
+    ],
+    "missingCorpusAbstains": true
+  }
+}

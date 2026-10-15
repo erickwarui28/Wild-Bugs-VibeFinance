@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0b0f14;
+  --surface: #121821;
+  --surface-2: #1a2230;
+  --border: #263041;
+  --text: #e6edf3;
+  --text-muted: #9aa7b8;
+  --brand: #b19cff;
+  --brand-fill: #6d43e5;
+  --bull: #22c55e;
+  --bear: #ef4444;
+  --neutral: #94a3b8;
+  --insufficient: #f59e0b;
+  --doc: #38bdf8;
+  --data: #a78bfa;
+  --momentum: #60a5fa;
+  --volume: #f472b6;
+  --sentiment: #38bdf8;
+  --risk: #fb923c;
+  --synth: #7c5cff;
+  --personal: #34d399;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+}
+button, a, input, select { font: inherit; }
+.tabular { font-variant-numeric: tabular-nums; }
+.mono { font-family: ui-monospace, "JetBrains Mono", monospace; }
+/* Keep notification text fully opaque until removal. Opacity fading produced
+   transient low contrast in Firefox; movement can still signal entry/exit. */
+[data-sonner-toast] { opacity: 1 !important; transition-property: transform, height !important; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+/* Adapted from the profile site's bento tiles: rounded surfaces, soft
+   accent gradients and independent stacks so card heights do not leave gaps. */
+.bento-layout { display: grid; gap: 14px; align-items: start; }
+.bento-column { display: grid; gap: 14px; min-width: 0; align-content: start; }
+.bento-summary { order: -2; }
+.bento-main { order: -1; }
+.bento-signals { display: grid; gap: 14px; min-width: 0; }
+.dashboard-bento .rounded-xl {
+  border-radius: 20px;
+  background-color: #101216;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 3%);
+  transition: border-color .2s ease, box-shadow .2s ease;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.dashboard-bento .rounded-xl:hover {
+  border-color: rgb(124 140 255 / 30%);
+  box-shadow: 0 0 32px rgb(91 108 255 / 6%);
+}
+.dashboard-bento .bento-hero {
+  padding: clamp(20px, 3vw, 32px);
+  background: radial-gradient(ellipse at 85% 10%, rgb(124 92 255 / 17%), transparent 60%), #101216;
+  border-color: rgb(124 140 255 / 25%);
+}
+.dashboard-bento h1 { letter-spacing: -.025em; }
+.bento-main > .rounded-xl {
+  background: radial-gradient(ellipse at 75% 100%, rgb(50 70 180 / 15%), transparent 65%), #101216;
+}
+.bento-summary > aside { position: static; background: radial-gradient(ellipse at 90% 5%, rgb(124 92 255 / 12%), transparent 60%), #101216; }
+.bento-watchlist button[aria-pressed="true"] { background: rgb(124 92 255 / 12%); box-shadow: inset 0 0 0 1px rgb(124 92 255 / 30%); }
+.bento-watchlist button:hover { background: rgb(255 255 255 / 4%); }
+.app-bento .rounded-xl {
+  min-width: 0;
+  border-radius: 20px;
+  background-color: #101216;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 3%);
+  overflow-wrap: anywhere;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.app-bento .rounded-xl:hover { border-color: rgb(124 140 255 / 30%); }
+.app-bento .bento-hero {
+  background: radial-gradient(ellipse at 85% 10%, rgb(124 92 255 / 17%), transparent 60%), #101216;
+  border-color: rgb(124 140 255 / 25%);
+  padding: clamp(20px, 3vw, 32px);
+}
+.app-bento h1, .app-bento h2 { letter-spacing: -.025em; }
+.app-bento .grid { gap: 14px; }
+.app-bento article.rounded-xl { background-image: radial-gradient(ellipse at 100% 0%, rgb(124 92 255 / 8%), transparent 65%); }
+@media (min-width: 768px) {
+  .bento-signals { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .bento-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+  .bento-main { grid-column: 2; grid-row: 1 / span 2; }
+  .bento-summary { grid-column: 1; grid-row: 1; }
+  .bento-sidebar { grid-column: 1; grid-row: 2; }
+}
+@media (min-width: 1280px) {
+  .bento-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1.15fr); }
+  .bento-main { grid-row: auto; }
+  .bento-summary { grid-column: 3; grid-row: 1; }
+  .bento-sidebar { grid-column: 1; grid-row: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

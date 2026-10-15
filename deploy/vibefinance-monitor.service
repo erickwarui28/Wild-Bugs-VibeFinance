@@ -1,0 +1,14 @@
+[Unit]
+Description=VibeFinance health, certificate and disk diagnostics
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/vibefinance/server
+ExecStart=/usr/local/bin/node /opt/vibefinance/deploy/monitor-vps.mjs
+TimeoutStartSec=45
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/vibefinance-ops

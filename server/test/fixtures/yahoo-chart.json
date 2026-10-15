@@ -1,0 +1,14 @@
+{
+  "chart": {
+    "result": [
+      {
+        "timestamp": [1756684800],
+        "indicators": {
+          "quote": [
+            { "open": [1500], "high": [1520], "low": [1490], "close": [1512.4], "volume": [2200000] }
+          ]
+        }
+      }
+    ]
+  }
+}

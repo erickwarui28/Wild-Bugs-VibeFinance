@@ -1,0 +1,44 @@
+import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
+import { readFile } from "node:fs/promises";
+
+test.use({ httpCredentials: { username: "qa-admin", password: "local-browser-only" } });
+test("admin filters, stable previous/next, CSV exports and accessible responsive layout", async ({ page }) => {
+  await page.goto("http://127.0.0.1:18092/admin");
+  await expect(page.locator("#visitors-page")).toContainText("40 matches");
+  const original = await page.locator("#visitors-rows tr").first().innerText();
+  await page.locator('[data-next="visitors"]').click();
+  await expect(page.locator("#visitors-page")).toContainText("Page 2");
+  await expect(page.locator("#visitors-rows tr")).toHaveCount(15);
+  await page.locator('[data-prev="visitors"]').click();
+  await expect(page.locator("#visitors-rows tr").first()).toHaveText(original, { useInnerText: true });
+  const filters = page.getByRole("form", { name: "API activity filters" });
+  await filters.getByLabel("Endpoint prefix").fill("/api/qa/");
+  await filters.getByLabel("Status", { exact: true }).selectOption("4xx");
+  await filters.getByRole("button", { name: "Apply filters", exact: true }).click();
+  await expect(page.locator("#activity-page")).toContainText("10 matches");
+  await expect(page.locator("#activity-rows tr")).toHaveCount(10);
+  const downloadPromise=page.waitForEvent("download");
+  await page.locator('[data-export="activity"]').click();
+  const download=await downloadPromise;
+  const csv=await readFile((await download.path())!,"utf8");
+  expect(csv).toContain('"status"'); expect(csv).toContain('"429"'); expect(csv).not.toContain('"200"');
+  expect(csv.trim().split("\r\n")).toHaveLength(11);
+  const axe=await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21aa"]).analyze();
+  expect(axe.violations).toEqual([]);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1)).toBe(true);
+  await page.screenshot({path:test.info().outputPath("admin.png"),fullPage:false});
+});
+test("failed admin filters retain the previous applied rows and recover on refresh", async ({page})=>{
+  await page.goto("http://127.0.0.1:18092/admin");
+  await expect(page.locator("#attempts-page")).toContainText("40 matches");
+  const previous=await page.locator("#attempts-rows").innerText();
+  await page.route("**/api/admin/records/attempts?**",route=>route.fulfill({status:503,contentType:"application/json",body:JSON.stringify({error:"Temporary QA failure"})}));
+  await page.locator('[data-next="attempts"]').click();
+  await expect(page.locator("#attempts-error")).toContainText("Temporary QA failure");
+  expect(await page.locator("#attempts-rows").innerText()).toBe(previous);
+  await page.unroute("**/api/admin/records/attempts?**");
+  await page.locator('[data-refresh="attempts"]').click();
+  await expect(page.locator("#attempts-status")).toHaveText("Records loaded.");
+  await expect(page.locator("#attempts-error")).toBeEmpty();
+});

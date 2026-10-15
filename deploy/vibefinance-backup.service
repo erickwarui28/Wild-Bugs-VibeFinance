@@ -1,0 +1,13 @@
+[Unit]
+Description=Verified online VibeFinance database backup
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/vibefinance/server
+ExecStart=/usr/local/bin/node /opt/vibefinance/deploy/backup-database.mjs
+TimeoutStartSec=300
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/vibefinance-backups

@@ -1,0 +1,13 @@
+[Unit]
+Description=Approved VibeFinance release backup retention
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flock -n /run/vibefinance-retention/lock /usr/local/bin/node /opt/vibefinance/deploy/retention.mjs --apply
+RuntimeDirectory=vibefinance-retention
+TimeoutStartSec=300
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/vibefinance-backups /var/lib/vibefinance-ops

@@ -1,0 +1,428 @@
+{
+  "runId": "run_3ad6a229_ab535837-a92b-48f8-a302-77a5d9e54d4c",
+  "steps": [
+    {
+      "name": "ingest",
+      "startedAt": "2026-10-14T14:45:49.469Z",
+      "endedAt": "2026-10-14T14:45:49.483Z",
+      "latencyMs": 14,
+      "payload": {
+        "asOf": "2026-08-19",
+        "bars": 270,
+        "flows": 1620,
+        "docs": 2,
+        "chunks": 4,
+        "dataMode": "synthetic",
+        "sector": "IT"
+      }
+    },
+    {
+      "name": "momentum",
+      "startedAt": "2026-10-14T14:45:49.483Z",
+      "endedAt": "2026-10-14T14:45:49.497Z",
+      "latencyMs": 14,
+      "payload": {
+        "features": {
+          "ret20": 0.12709546793586202,
+          "rsi14": 100,
+          "sma20": 1110.3474999999999,
+          "sma50": 1019.8692000000001,
+          "macd": 1,
+          "zRet20": 1.7750927732495165
+        },
+        "label": "bullish",
+        "score": 0.9338339788385244,
+        "confidence": 0.8169169894192622,
+        "claims": [
+          {
+            "text": "The 20-day return is +12.7% and RSI is 100.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "ohlcv",
+                "field": "ret20",
+                "asOf": "2026-08-19",
+                "value": 0.1271,
+                "provenance": "SYNTHETIC",
+                "origin": "synthetic",
+                "fetchedAt": null
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "rsi14",
+                "asOf": "2026-08-19",
+                "value": 100,
+                "provenance": "SYNTHETIC",
+                "origin": "synthetic",
+                "fetchedAt": null
+              }
+            ]
+          },
+          {
+            "text": "The 20-day average (1110.3) is above the 50-day average (1019.9).",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "sma20",
+                "asOf": "2026-08-19",
+                "value": 1110.3475,
+                "provenance": "SYNTHETIC",
+                "origin": "synthetic",
+                "fetchedAt": null
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "sma50",
+                "asOf": "2026-08-19",
+                "value": 1019.8692,
+                "provenance": "SYNTHETIC",
+                "origin": "synthetic",
+                "fetchedAt": null
+              }
+            ]
+          }
+        ],
+        "mode": "mock",
+        "degraded": [],
+        "chunks": [],
+        "order": 0
+      }
+    },
+    {
+      "name": "volume",
+      "startedAt": "2026-10-14T14:45:49.483Z",
+      "endedAt": "2026-10-14T14:45:49.494Z",
+      "latencyMs": 11,
+      "payload": {
+        "features": {
+          "volumeZ": 0.6237615559488584,
+          "volScore": 0,
+          "fii5": 565.54,
+          "dii5": -276.35,
+          "fiiZ5": -0.513383816195592,
+          "flowScore": -0.2511987687124817
+        },
+        "label": "neutral",
+        "score": -0.07535963061374451,
+        "confidence": 0.38767981530687223,
+        "claims": [
+          {
+            "text": "Volume is inside its recent range (z 0.62).",
+            "citations": [
+              {
+                "type": "data",
+                "source": "volume",
+                "field": "volumeZ20",
+                "asOf": "2026-08-19",
+                "value": 0.6238,
+                "provenance": "SYNTHETIC",
+                "origin": "synthetic",
+                "fetchedAt": null
+              }
+            ]
+          },
+          {
+            "text": "Five-day IT FII net flow is 566 crore. That series is synthetic.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "flows",
+                "field": "fii5.IT",
+                "asOf": "2026-08-19",
+                "value": 565.54,
+                "provenance": "SYNTHETIC",
+                "origin": "synthetic",
+                "fetchedAt": null
+              }
+            ]
+          }
+        ],
+        "mode": "mock",
+        "degraded": [],
+        "chunks": [],
+        "order": 1
+      }
+    },
+    {
+      "name": "sentiment",
+      "startedAt": "2026-10-14T14:45:49.483Z",
+      "endedAt": "2026-10-14T14:45:49.491Z",
+      "latencyMs": 8,
+      "payload": {
+        "features": {
+          "chunks": 4,
+          "lexicon": -0.5
+        },
+        "label": "bearish",
+        "score": -0.5,
+        "confidence": 0.6,
+        "claims": [
+          {
+            "text": "Filings retrieved for INFY read negative. The closest passage is from INFY Q2 earnings call transcript.",
+            "citations": [
+              {
+                "type": "doc",
+                "docId": "DOC-INFY-Q2-T",
+                "chunkId": "DOC-INFY-Q2-T#c0",
+                "snippet": "[SYNTHETIC DOCUMENT – for demo only] The call disclosed a guidance cut, a margin miss, weaker demand, and a decline versus last year. Management flagged concern about the outlook. Guidance was cut. The tone on the call was cautious and the ",
+                "score": 0.917,
+                "provenance": "SYNTHETIC",
+                "sourceUrl": null,
+                "fetchedAt": null
+              },
+              {
+                "type": "doc",
+                "docId": "DOC-INFY-Q2-R",
+                "chunkId": "DOC-INFY-Q2-R#c0",
+                "snippet": "[SYNTHETIC DOCUMENT – for demo only] Volumes were stable and management kept annual guidance flat. Margins moved within the usual seasonal range. This synthetic note concerns Infosys (INFY) and exists only so a demo can retrieve and cite a ",
+                "score": 0.299,
+                "provenance": "SYNTHETIC",
+                "sourceUrl": null,
+                "fetchedAt": null
+              },
+              {
+                "type": "doc",
+                "docId": "DOC-INFY-Q2-T",
+                "chunkId": "DOC-INFY-Q2-T#c3",
+                "snippet": "generator, not taken from a live filing. Shareholders were reminded that past quarterly patterns in this fixture are generated, not observed in the market. Seeded illustration only: revenue growth 6.9 percent and a margin move of 57 basis p",
+                "score": 0.298,
+                "provenance": "SYNTHETIC",
+                "sourceUrl": null,
+                "fetchedAt": null
+              },
+              {
+                "type": "doc",
+                "docId": "DOC-INFY-Q2-T",
+                "chunkId": "DOC-INFY-Q2-T#c4",
+                "snippet": "filing. The board reviewed ordinary-course capital expenditure and confirmed that no unpublished price-sensitive information is being withheld beyond this note. Seeded illustration only: revenue growth 5.1 percent and a margin move of 35 ba",
+                "score": 0.274,
+                "provenance": "SYNTHETIC",
+                "sourceUrl": null,
+                "fetchedAt": null
+              }
+            ]
+          },
+          {
+            "text": "A retrieved passage mentions a guidance cut.",
+            "citations": [
+              {
+                "type": "doc",
+                "docId": "DOC-INFY-Q2-T",
+                "chunkId": "DOC-INFY-Q2-T#c0",
+                "snippet": "[SYNTHETIC DOCUMENT – for demo only] The call disclosed a guidance cut, a margin miss, weaker demand, and a decline versus last year. Management flagged concern about the outlook. Guidance was cut. The tone on the call was cautious and the ",
+                "score": 0.917,
+                "provenance": "SYNTHETIC",
+                "sourceUrl": null,
+                "fetchedAt": null
+              }
+            ]
+          }
+        ],
+        "mode": "mock",
+        "degraded": [],
+        "chunks": [
+          {
+            "docId": "DOC-INFY-Q2-T",
+            "chunkId": "DOC-INFY-Q2-T#c0",
+            "title": "INFY Q2 earnings call transcript",
+            "date": "2026-08-03",
+            "snippet": "[SYNTHETIC DOCUMENT – for demo only] The call disclosed a guidance cut, a margin miss, weaker demand, and a decline versus last year. Management flagged concern about the outlook. Guidance was cut. The tone on the call was cautious and the ",
+            "score": 0.917,
+            "provenance": "SYNTHETIC",
+            "sourceUrl": null,
+            "fetchedAt": null
+          },
+          {
+            "docId": "DOC-INFY-Q2-R",
+            "chunkId": "DOC-INFY-Q2-R#c0",
+            "title": "INFY Q2 results note",
+            "date": "2026-07-30",
+            "snippet": "[SYNTHETIC DOCUMENT – for demo only] Volumes were stable and management kept annual guidance flat. Margins moved within the usual seasonal range. This synthetic note concerns Infosys (INFY) and exists only so a demo can retrieve and cite a ",
+            "score": 0.299,
+            "provenance": "SYNTHETIC",
+            "sourceUrl": null,
+            "fetchedAt": null
+          },
+          {
+            "docId": "DOC-INFY-Q2-T",
+            "chunkId": "DOC-INFY-Q2-T#c3",
+            "title": "INFY Q2 earnings call transcript",
+            "date": "2026-08-03",
+            "snippet": "generator, not taken from a live filing. Shareholders were reminded that past quarterly patterns in this fixture are generated, not observed in the market. Seeded illustration only: revenue growth 6.9 percent and a margin move of 57 basis p",
+            "score": 0.298,
+            "provenance": "SYNTHETIC",
+            "sourceUrl": null,
+            "fetchedAt": null
+          },
+          {
+            "docId": "DOC-INFY-Q2-T",
+            "chunkId": "DOC-INFY-Q2-T#c4",
+            "title": "INFY Q2 earnings call transcript",
+            "date": "2026-08-03",
+            "snippet": "filing. The board reviewed ordinary-course capital expenditure and confirmed that no unpublished price-sensitive information is being withheld beyond this note. Seeded illustration only: revenue growth 5.1 percent and a margin move of 35 ba",
+            "score": 0.274,
+            "provenance": "SYNTHETIC",
+            "sourceUrl": null,
+            "fetchedAt": null
+          }
+        ],
+        "order": 2
+      }
+    },
+    {
+      "name": "risk",
+      "startedAt": "2026-10-14T14:45:49.483Z",
+      "endedAt": "2026-10-14T14:45:49.487Z",
+      "latencyMs": 4,
+      "payload": {
+        "features": {
+          "vol20": 0.00003454300231658543,
+          "maxDrawdown60": -0.02488506245662736,
+          "beta60": 0.570798735084332
+        },
+        "label": "bullish",
+        "score": 0.9998618279907336,
+        "confidence": 0.8499309139953668,
+        "claims": [
+          {
+            "text": "Annualised 20-day volatility is +0.0%.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "vol20",
+                "asOf": "2026-08-19",
+                "value": 0,
+                "provenance": "SYNTHETIC",
+                "origin": "synthetic",
+                "fetchedAt": null
+              }
+            ]
+          },
+          {
+            "text": "The 60-day drawdown is -2.5% and beta versus the equal-weight basket is 0.57.",
+            "citations": [
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "maxDrawdown60",
+                "asOf": "2026-08-19",
+                "value": -0.0249,
+                "provenance": "SYNTHETIC",
+                "origin": "synthetic",
+                "fetchedAt": null
+              },
+              {
+                "type": "data",
+                "source": "derived",
+                "field": "beta60",
+                "asOf": "2026-08-19",
+                "value": 0.5708,
+                "provenance": "SYNTHETIC",
+                "origin": "synthetic",
+                "fetchedAt": null
+              }
+            ]
+          }
+        ],
+        "mode": "mock",
+        "degraded": [],
+        "chunks": [],
+        "order": 3
+      }
+    },
+    {
+      "name": "synthesizer",
+      "startedAt": "2026-10-14T14:45:49.503Z",
+      "endedAt": "2026-10-14T14:45:49.503Z",
+      "latencyMs": 0,
+      "payload": {
+        "rows": [
+          {
+            "agent": "momentum",
+            "w": 0.3,
+            "conf": 0.8169169894192622,
+            "effW": 0.24507509682577863,
+            "score": 0.9338339788385244,
+            "contrib": 0.22885945278305347,
+            "excluded": false
+          },
+          {
+            "agent": "volume",
+            "w": 0.2,
+            "conf": 0.38767981530687223,
+            "effW": 0.07753596306137445,
+            "score": -0.07535963061374451,
+            "contrib": -0.005843081535586117,
+            "excluded": false
+          },
+          {
+            "agent": "sentiment",
+            "w": 0.3,
+            "conf": 0.6,
+            "effW": 0.18,
+            "score": -0.5,
+            "contrib": -0.09,
+            "excluded": false
+          },
+          {
+            "agent": "risk",
+            "w": 0.2,
+            "conf": 0.8499309139953668,
+            "effW": 0.16998618279907338,
+            "score": 0.9998618279907336,
+            "contrib": 0.16996269546664852,
+            "excluded": false
+          }
+        ],
+        "formula": "composite = sum(effW * score) / sum(effW)",
+        "compositeScore": 0.4504613570880467,
+        "agreement": 0.3404139972746052,
+        "confidence": 0.48102610554799646,
+        "rawConfidence": 0.48102610554799646,
+        "calibratedConfidence": null,
+        "uncertainty": null
+      }
+    },
+    {
+      "name": "personaliser",
+      "startedAt": "2026-10-14T14:45:49.503Z",
+      "endedAt": "2026-10-14T14:45:49.504Z",
+      "latencyMs": 1,
+      "payload": {
+        "action": "accumulate",
+        "positionSizePct": 1.9,
+        "rules": [
+          "thresholds",
+          "hhi",
+          "behaviour"
+        ]
+      }
+    },
+    {
+      "name": "citation-enforcer",
+      "startedAt": "2026-10-14T14:45:49.504Z",
+      "endedAt": "2026-10-14T14:45:49.505Z",
+      "latencyMs": 1,
+      "payload": {
+        "dropped": 0,
+        "kept": 13
+      }
+    },
+    {
+      "name": "recommendation",
+      "startedAt": "2026-10-14T14:45:49.505Z",
+      "endedAt": "2026-10-14T14:45:49.505Z",
+      "latencyMs": 0,
+      "payload": {
+        "action": "accumulate",
+        "label": "bullish",
+        "profileId": "moderate"
+      }
+    }
+  ],
+  "disclaimer": "Not financial advice. Demonstration only."
+}

@@ -1,0 +1,32 @@
+{
+  "name": "vibefinance",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Explainable, personalised market intelligence from parallel AI agents.",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "shared",
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm run build -w shared && concurrently -n server,web -c blue,magenta \"npm run dev -w server\" \"npm run dev -w web\"",
+    "seed": "npm run seed -w server",
+    "test": "npm test -w server",
+    "test:e2e": "npm run build -w shared && npm run build -w server && playwright test",
+    "test:e2e:report": "playwright show-report",
+    "lint": "npm run lint -w shared && npm run lint -w server && npm run lint -w web",
+    "build": "npm run build -w shared && npm run build -w server && npm run build -w web",
+    "snapshot:build": "npm run snapshot:build -w server",
+    "backtest": "npm run build -w shared && npm run backtest -w server",
+    "latency-report": "npm run build -w shared && npm run latency-report -w server",
+    "export-demo": "npm run export-demo -w server"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.1",
+    "concurrently": "^9.1.2"
+  }
+}
