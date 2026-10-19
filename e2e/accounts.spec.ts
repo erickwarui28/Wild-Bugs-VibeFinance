@@ -9,6 +9,7 @@ test("signup, login, approval, revocation and admin password recovery",async({pa
   await page.getByRole('button',{name:'Create account',exact:true}).click();
   await expect(page.getByText('Account created. Log in to see your approval status.',{exact:false})).toBeVisible();
   await page.getByRole('link',{name:'Already registered? Log in',exact:true}).click();
+  await expect(page.getByRole('heading',{name:'Welcome back',exact:true})).toBeVisible();
   await page.getByLabel('Email',{exact:true}).fill(email);await page.getByLabel('Password',{exact:true}).fill(password);await page.getByRole('button',{name:'Log in',exact:true}).click();
   await expect(page.getByRole('heading',{name:'Your account',exact:true})).toBeVisible();
   await expect(page.getByText('Live access is pending or revoked.',{exact:false})).toBeVisible();
@@ -32,7 +33,8 @@ test("signup, login, approval, revocation and admin password recovery",async({pa
   await page.reload();await page.getByLabel('Email',{exact:true}).fill(email);await page.getByLabel('Password',{exact:true}).fill('replacement-browser-password');await page.getByRole('button',{name:'Log in',exact:true}).click();
   await expect(page.getByRole('heading',{name:'Your account',exact:true})).toBeVisible();
   await page.getByRole('button',{name:'Log out',exact:true}).click();await expect(page.getByRole('heading',{name:'Welcome back',exact:true})).toBeVisible();
-  expect((await page.context().cookies()).some(c=>c.name==='vf_account')).toBe(false);
+  expect((await(await page.request.get('/api/auth/me')).json()).user).toBeNull();
+  await expect.poll(async()=>(await page.context().cookies()).some(c=>c.name==='vf_account')).toBe(false);
 });
 test("anonymous Live sends users to login instead of calling the Live API",async({page})=>{
   await page.goto('/#/');await expect(page.getByRole('button',{name:'Save research note',exact:true})).toBeVisible();

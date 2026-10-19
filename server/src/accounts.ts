@@ -88,7 +88,7 @@ export function renew(req: Request,res: Response): void {
 }
 export function logout(req: Request,res: Response): void {
   if(res.locals.accountTokenHash)getDb().prepare("DELETE FROM user_sessions WHERE token_hash=?").run(res.locals.accountTokenHash);
-  setCookie(req,res,"",0);res.json({ok:true});
+  res.clearCookie(cookie,{httpOnly:true,secure:req.secure,sameSite:"lax",path:"/"});res.json({ok:true});
 }
 export function requireLiveAccess(req: Request,res: Response,next: NextFunction): void {
   const mode=req.method==="POST"?req.body?.mode:req.query.mode;
