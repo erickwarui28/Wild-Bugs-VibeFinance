@@ -19,6 +19,6 @@ export default defineConfig({
   webServer: [
     { command: "node e2e/server.mjs", url: "http://127.0.0.1:18092/api/health", reuseExistingServer: false, timeout: 60_000 },
     { command: "node node_modules/vite/bin/vite.js web --host 127.0.0.1 --port 5192 --strictPort", url: "http://127.0.0.1:5192",
-      reuseExistingServer: false, timeout: 60_000, env: { VITE_API_BASE_URL: "http://127.0.0.1:18092" } },
+      reuseExistingServer: false, timeout: 60_000, env: { VITE_API_BASE_URL: "", VF_PROXY_TARGET: "http://127.0.0.1:18092" } },
   ],
 });

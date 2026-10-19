@@ -2,6 +2,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { AppShell } from "./components/AppShell";
 import { PageErrorBoundary } from "./components/PageErrorBoundary";
 import { lazy, Suspense } from "react";
+import { AccountPage } from "./pages/Account";
 const Compare = lazy(() => import("./pages/Compare").then((m) => ({ default: m.Compare })));
 const Dashboard = lazy(() => import("./pages/Dashboard").then((m) => ({ default: m.Dashboard })));
 const Docs = lazy(() => import("./pages/Docs").then((m) => ({ default: m.Docs })));
@@ -14,6 +15,9 @@ export function App() {
     <PageErrorBoundary><HashRouter>
       <Suspense fallback={<p role="status" className="p-6">Loading page…</p>}><Routes>
         <Route element={<AppShell />}>
+          <Route path="/login" element={<AccountPage key="login" />} />
+          <Route path="/signup" element={<AccountPage key="signup" signup />} />
+          <Route path="/account" element={<AccountPage key="account" />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/trace" element={<Trace />} />

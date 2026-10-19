@@ -10,7 +10,7 @@ Object.assign(process.env, {
   LLM_PROVIDER: 'mock', OPENAI_API_KEY: '', GEMINI_API_KEY: '', EMBEDDINGS: 'local',
   DATA_MODE: 'live', GDELT_ENABLED: 'false', FEATURES: 'x1,x2,x3,x4,x5,x6,x7',
   FII_CSV_PATH: path.join(qaDirectory, 'unavailable-flows.csv'),
-  ADMIN_USERNAME: 'qa-admin', ADMIN_PASSWORD: 'local-browser-only',
+  ADMIN_USERNAME: 'qa-owner@example.test', ADMIN_PASSWORD: 'local-browser-only',
   CORS_ORIGINS: 'http://127.0.0.1:5192', VF_FAST: '1', LOG_LEVEL: 'silent', VITEST: 'true',
 });
 // Recorded source fixtures exercise Live mode without sending any requests to external services.

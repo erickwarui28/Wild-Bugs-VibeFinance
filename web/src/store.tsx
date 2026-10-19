@@ -13,6 +13,7 @@ import {
   type TickerRow,
 } from "./api";
 import type { Health } from "@vibefinance/shared";
+import {accountSite,accountUrl,useAccount} from "./account";
 
 interface Store {
   offline: boolean;
@@ -43,6 +44,7 @@ export function useStore(): Store {
 }
 
 export function StoreProvider({ children }: { children: ReactNode }) {
+  const account=useAccount();
   const [offline, setOffline] = useState(false);
   const [health, setHealth] = useState<Health | null>(null);
   const [tickers, setTickers] = useState<TickerRow[]>([]);
@@ -51,7 +53,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [profileId, setProfileId] = useState("moderate");
   const [degrade, setDegrade] = useState<string[]>([]);
   const [mode, setModeState] = useState<RunMode>(() => {
-    try { return localStorage.getItem("vf-run-mode") === "live" ? "live" : "demo"; }
+    try { return account.user?.liveApproved && localStorage.getItem("vf-run-mode") === "live" ? "live" : "demo"; }
     catch { return "demo"; }
   });
   const [synthesis, setSynthesis] = useState<Synthesis | null>(null);
@@ -152,6 +154,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }
 
   function setMode(next: RunMode) {
+    if(next==="live"&&!account.user?.liveApproved){
+      toast(account.user?"Live access requires administrator approval.":"Log in to request Live access.");
+      if(accountSite)location.hash=account.user?"/account":"/login";else location.assign(accountUrl("login"));
+      return;
+    }
     if (next === mode) return;
     activeRun.current?.abort(); runGen.current++;
     try { localStorage.setItem("vf-run-mode", next); } catch { /* Keep the selection in memory. */ }
@@ -160,6 +167,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setReady(false);
     setLoading(true);
   }
+  useEffect(()=>{
+    if(account.ready && !account.user?.liveApproved && mode==="live")setMode("demo");
+  },[account.ready,account.user?.id,account.user?.liveApproved,mode]);
 
   function selectTicker(next: string) {
     if (next === ticker) return;

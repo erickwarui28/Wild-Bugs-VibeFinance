@@ -3,9 +3,10 @@ import * as Switch from "@radix-ui/react-switch";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { useRef, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { DISCLAIMER } from "../api";
+import { API_BASE, DISCLAIMER } from "../api";
 import { useStore } from "../store";
 import { GlossaryButton } from "./Glossary";
+import {accountSite,accountUrl,useAccount} from "../account";
 
 const NAV = [
   ["/", "Dashboard"],
@@ -25,6 +26,7 @@ const MODES: { id: string; label: string; detail: string }[] = [
 ];
 
 export function AppShell() {
+  const account=useAccount();
   const store = useStore();
   const [open, setOpen] = useState(false);
   const [about, setAbout] = useState(false);
@@ -53,6 +55,8 @@ export function AppShell() {
               ))}
             </nav>
             <div className="ml-auto flex flex-wrap items-center gap-2">
+              {accountSite?<NavLink className="text-sm underline" to={account.user?"/account":"/login"}>{account.user?"Account":"Log in / Sign up"}</NavLink>:<a className="text-sm underline" href={accountUrl("login")}>Log in / Sign up</a>}
+              {account.user?.isAdmin&&<a className="text-sm underline" href={`${API_BASE}/admin/users`}>Manage users</a>}
               <select className="rounded-lg border border-[var(--border)] bg-[var(--surface-2)] px-2 py-1" value={store.ticker} onChange={(e) => store.setTicker(e.target.value)} aria-label="Ticker">
                 {(store.tickers.length ? store.tickers : [{ ticker: "INFY" }]).map((t) => (
                   <option key={t.ticker}>{t.ticker}</option>
@@ -163,7 +167,7 @@ function AboutDialog({ open, onOpenChange, restoreFocus }: { open: boolean; onOp
             </>}
             <p>Sentiment is a lexicon over retrieved chunks, not a model of management intent.</p>
             <p>New analyses freeze the chart and cited source evidence together. Refresh an analysis to request newer data.</p>
-            <p>No account is required. A signed anonymous visitor token is stored in this browser for usage limits and access to your backend analysis history. Keep it private. Application usage records contain request activity, model token counts and a keyed network identifier rather than raw IP addresses. Your journal notes stay on this device. Hosting infrastructure may retain separate access logs.</p>
+            <p>Demo requires no account. Live requires a logged-in account approved by the administrator. Account sessions use an HTTP-only cookie for 30 days, with explicit renewal and logout. Email addresses and password hashes are stored on the backend; email addresses are not verified. An anonymous visitor token is still used for Demo usage and history. Operational records include usage and a keyed network identifier, not raw IP addresses. Journal notes stay on this device, are shared by users of this browser, and are not account-synced. Hosting infrastructure may retain separate access logs.</p>
             <p>Accuracy against 30-day forward returns is an evaluation on this fixture or on a pinned snapshot. It is not a forecast.</p>
             <p>This is not SEBI-registered advice. Not financial advice. Demonstration only.</p>
           </div>

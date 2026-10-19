@@ -32,6 +32,17 @@ export function getDb(): Database.Database {
         CREATE INDEX IF NOT EXISTS idx_audit_visitor_id ON admin_audit(visitor_id, id DESC);
         CREATE INDEX IF NOT EXISTS idx_audit_created_id ON admin_audit(created_at, id DESC);
       ` },
+      { version: 3, name: "user-accounts-and-revocable-sessions", sql: `
+        CREATE TABLE users (id TEXT PRIMARY KEY, email TEXT NOT NULL UNIQUE COLLATE NOCASE,
+          password_hash TEXT NOT NULL, live_approved INTEGER NOT NULL DEFAULT 0,
+          created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
+        CREATE TABLE user_sessions (token_hash TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id),
+          expires_at INTEGER NOT NULL, created_at TEXT NOT NULL);
+        CREATE INDEX idx_user_sessions_user ON user_sessions(user_id);
+        CREATE INDEX idx_user_sessions_expiry ON user_sessions(expires_at);
+        CREATE TABLE user_access_audit (id INTEGER PRIMARY KEY AUTOINCREMENT, actor TEXT NOT NULL,
+          user_id TEXT NOT NULL, action TEXT NOT NULL, created_at TEXT NOT NULL);
+      ` },
     ]);
   } catch (error) {
     instance.close();

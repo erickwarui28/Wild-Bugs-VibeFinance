@@ -17,7 +17,7 @@ export class UsageLimitError extends Error {
 
 export function usageContext(req: Request, res: Response, next: NextFunction): void {
   const network = networkId(req.ip ?? "unknown");
-  const authenticated = verifyIdentity(req.get("x-vf-visitor"));
+  const authenticated = res.locals.account?.id ?? verifyIdentity(req.get("x-vf-visitor"));
   const visitorId = authenticated ?? `network_${network.slice(0, 16)}`;
   res.locals.visitorId = visitorId;
   res.locals.authenticatedVisitor = authenticated;
@@ -44,6 +44,9 @@ export function recordActivity(req: Request, res: Response, next: NextFunction):
 export function reserveOpenAiCall(options?: { model: string; inputBound: number; outputBound: number }): number {
   const visitorId = requestContext.getStore()?.visitorId ?? "maintenance";
   const db = getDb();
+  if(visitorId.startsWith("account_") && !(db.prepare("SELECT live_approved FROM users WHERE id=?").get(visitorId) as {live_approved:number}|undefined)?.live_approved) {
+    throw new UsageLimitError("Live access has been revoked. No further OpenAI calls are permitted.");
+  }
   const cfg = getConfig();
   const now = Date.now();
   const nowIso = new Date(now).toISOString();

@@ -2,7 +2,23 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
 
-test.use({ httpCredentials: { username: "qa-admin", password: "local-browser-only" } });
+test.use({ httpCredentials: { username: "qa-owner@example.test", password: "local-browser-only" } });
+test("admin users page searches, approves, revokes and resets a password",async({page,request})=>{
+  const email=`admin-ui-${Date.now()}@example.test`;
+  expect((await request.post('http://127.0.0.1:18092/api/auth/register',{data:{email,password:'admin-ui-test-password'}})).status()).toBe(201);
+  await page.goto('http://127.0.0.1:18092/admin/users');
+  await page.getByLabel('Search email',{exact:true}).fill(email);await page.getByRole('button',{name:'Search',exact:true}).click();
+  const row=page.getByRole('row').filter({hasText:email});await expect(row).toBeVisible();
+  page.on('dialog',d=>d.accept());
+  await row.getByRole('button',{name:'Approve Live',exact:true}).click();await expect(row.getByRole('cell',{name:'Approved',exact:true})).toBeVisible();
+  await row.getByRole('button',{name:'Revoke Live',exact:true}).click();await expect(row.getByRole('cell',{name:'Pending / revoked',exact:true})).toBeVisible();
+  await row.getByRole('button',{name:'Select for password reset',exact:true}).click();
+  await page.getByLabel('New password (12–128 characters)',{exact:true}).fill('admin-reset-ui-password');
+  await page.getByRole('button',{name:'Reset password',exact:true}).click();
+  await expect(page.getByRole('status')).toContainText('User updated.');
+  await page.screenshot({path:test.info().outputPath('admin-users.png'),fullPage:true});
+  expect((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa']).analyze()).violations).toEqual([]);
+});
 test("admin filters, stable previous/next, CSV exports and accessible responsive layout", async ({ page }) => {
   await page.goto("http://127.0.0.1:18092/admin");
   await expect(page.locator("#visitors-page")).toContainText("40 matches");

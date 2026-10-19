@@ -26,8 +26,11 @@ async function visitorHeaders(): Promise<Record<string, string>> {
   return { "x-vf-visitor": await visitorPromise };
 }
 
-function checkIdentity(response: Response): void {
+async function checkIdentity(response: Response): Promise<void> {
+  if(response.status===401 && response.url.includes('/api/auth/'))return;
   if (response.status !== 401) return;
+  const body=await response.clone().json().catch(()=>({})) as {code?:string};
+  if(body.code==="LOGIN_REQUIRED")throw new Error("Your Live login is missing or expired. Log in again; Demo remains available.");
   visitorPromise = null; visitorToken = "";
   try { localStorage.removeItem("vf-visitor-token-v1"); } catch { /* Blocked storage. */ }
   throw new Error("Your anonymous identity is no longer valid. Reload the page to reconnect.");
@@ -67,10 +70,10 @@ async function getJson<T>(path: string, timeoutMs = 20000, callerSignal?: AbortS
   try {
     const headers = path === "/api/health" ? {} : await visitorHeaders();
     signal.throwIfAborted();
-    const res = await fetch(`${API_BASE}${path}`, { signal, headers });
-    checkIdentity(res);
+    const res = await fetch(`${API_BASE}${path}`, { signal, headers, credentials:"include" });
+    await checkIdentity(res);
     if (res.status === 429) throw new Error("rate");
-    if (!res.ok) throw new Error(`request failed ${res.status}`);
+    if (!res.ok) throw new Error(await errorMessage(res,`request failed ${res.status}`));
     return (await res.json()) as T;
   } finally {
     clearTimeout(timer);
@@ -122,8 +125,8 @@ async function postRun<T>(path: string, body: object, options: RunOptions): Prom
     const headers = await visitorHeaders();
     signal.throwIfAborted();
     const response = await fetch(`${API_BASE}${path}`, { method: "POST", signal,
-      headers: { "content-type": "application/json", ...headers }, body: JSON.stringify({ ...body, refresh: options.refresh ?? false }) });
-    checkIdentity(response);
+      headers: { "content-type": "application/json", ...headers }, credentials:"include", body: JSON.stringify({ ...body, refresh: options.refresh ?? false }) });
+    await checkIdentity(response);
     if (!response.ok) throw new Error(await errorMessage(response, "Analysis could not complete. Please retry."));
     return await response.json() as T;
   } catch (error) {

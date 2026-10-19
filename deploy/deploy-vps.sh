@@ -12,6 +12,7 @@ mkdir -p "$backup_dir"
 git rev-parse HEAD > "$backup_dir/previous-revision.txt"
 cp -a server/dist "$backup_dir/server-dist"
 cp -a shared/dist "$backup_dir/shared-dist"
+if [[ -d web/dist ]]; then cp -a web/dist "$backup_dir/web-dist"; fi
 cp -a node_modules "$backup_dir/node-modules"
 export VF_BACKUP_DIR="$backup_dir"
 (
@@ -42,6 +43,10 @@ rollback() {
   mv /opt/vibefinance/shared/dist "$backup_dir/failed-shared-dist"
   cp -a "$backup_dir/server-dist" /opt/vibefinance/server/dist
   cp -a "$backup_dir/shared-dist" /opt/vibefinance/shared/dist
+  if [[ -d "$backup_dir/web-dist" ]]; then
+    if [[ -d /opt/vibefinance/web/dist ]]; then mv /opt/vibefinance/web/dist "$backup_dir/failed-web-dist"; fi
+    cp -a "$backup_dir/web-dist" /opt/vibefinance/web/dist
+  fi
   restart_runtime
   curl --fail --retry 5 --retry-delay 2 --retry-connrefused --max-time 10 http://127.0.0.1:8080/api/health
   echo "Database backup preserved; additive schema changes are not reversed automatically."
@@ -60,6 +65,7 @@ git pull --ff-only origin main
 npm ci
 npm run build -w shared
 npm run build -w server
+npm run build -w web
 restart_runtime
 curl --fail --retry 5 --retry-delay 2 --retry-connrefused --max-time 10 http://127.0.0.1:8080/api/health
 if ! systemctl is-enabled --quiet vibefinance.service 2>/dev/null; then pm2 save; fi

@@ -4,6 +4,7 @@ set -Eeuo pipefail
 [[ "$(id -u)" == 0 ]]
 getent group vibefinance >/dev/null
 targets=(/opt/vibefinance/node_modules /opt/vibefinance/server/dist /opt/vibefinance/shared/dist)
+if [[ -d /opt/vibefinance/web/dist ]]; then targets+=(/opt/vibefinance/web/dist); fi
 if [[ -d /opt/vibefinance/docs/evaluation ]]; then
   [[ "$(realpath /opt/vibefinance/docs)" == /opt/vibefinance/docs ]]
   chown root:vibefinance /opt/vibefinance/docs

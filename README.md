@@ -11,9 +11,9 @@ Not financial advice. Demonstration only. The app runs keyless in mock mode.
 - [Review-only source repository](https://github.com/erickwarui28/Wild-Bugs-VibeFinance)
 - [Architecture](docs/architecture.md) and [submission guide](docs/SUBMISSION.md)
 
-This repository is a single-commit source submission, not a GitHub Pages host. The built frontend is published in the `vibefinance/` folder of `erickwarui28.github.io`; the HTTPS API is hosted separately. The profile repository owns the manual VibeFinance quality workflow. Production builds use `VITE_BASE=/vibefinance/`; this URL does not depend on the source repository name.
+This repository holds the reviewable submission source, not a GitHub Pages host. The built public Demo is published in the `vibefinance/` folder of `erickwarui28.github.io`; the HTTPS API also serves a same-origin authenticated workspace. The profile repository owns the manual VibeFinance quality workflow. Production builds use `VITE_BASE=/vibefinance/`; this URL does not depend on the source repository name.
 
-Use Node.js 22.12 or newer. No production credentials or databases are required for local review. First visits open **Demo** for reproducible synthetic evidence without paid model calls. **Try Live** is optional, and a saved Live selection is remembered.
+Use Node.js 22.12 or newer. No production credentials or databases are required for local review. First visits open **Demo** for reproducible synthetic evidence without paid model calls. **Live requires login and administrator approval.** Signup creates a pending account. Sessions last 30 days with explicit renewal and logout; administrators can approve/revoke Live and reset passwords at `/admin/users`. Email addresses are not verified and recovery is administrator-managed. Device-local notes are not account-synced. See [account access and deployment](docs/ACCOUNT-ACCESS.md) for setup and security details.
 
 ## Quickstart
 

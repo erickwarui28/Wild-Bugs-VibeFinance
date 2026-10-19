@@ -28,19 +28,24 @@ import { requestLifecycle } from "./requestLifecycle.js";
 import { analysisRuntimeStatus } from "./analysisRuntime.js";
 import { sourceRuntimeStatus } from "./data/live/fetch.js";
 import { BusyError, isAbort } from "./reliability.js";
+import { accountContext, bootstrapOwner, listUsers, login, logout, me, register, renew, requireLiveAccess, sameOrigin, updateUser } from "./accounts.js";
+import { adminUsersPage } from "./adminUsersView.js";
 
 export function createApp() {
   ensureSeeded();
+  bootstrapOwner();
   const cfg = getConfig();
   const app = express();
   app.set("trust proxy", "loopback");
   app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
   app.use(express.json({ limit: "1mb" }));
+  app.use(accountContext);
   app.use(usageContext);
   app.use(recordActivity);
   const origins = cfg.CORS_ORIGINS.split(",").map((s) => s.trim()).filter(Boolean);
   app.use(
     cors({
+      credentials: true,
       origin(origin, cb) {
         if (!origin || origins.includes(origin)) cb(null, true);
         else cb(null, false);
@@ -55,6 +60,14 @@ export function createApp() {
     skip: () => process.env.VITEST === "true",
     message: { error: "Too many runs", degraded: ["rate_limited"] },
   });
+  app.use("/api/auth", (_req,res,next)=>{res.setHeader("Cache-Control","no-store");next();});
+  app.use(["/api/auth/login","/api/auth/register"],rateLimit({windowMs:15*60_000,limit:15,standardHeaders:true,legacyHeaders:false,
+    skip:()=>process.env.VITEST==="true",message:{error:"Too many login or signup attempts. Try again in 15 minutes."}}));
+  app.get("/api/auth/me",me);
+  app.post("/api/auth/register",sameOrigin,register);
+  app.post("/api/auth/login",sameOrigin,login);
+  app.post("/api/auth/renew",sameOrigin,renew);
+  app.post("/api/auth/logout",sameOrigin,logout);
   app.use(["/admin", "/api/admin"], rateLimit({
     windowMs: 60_000,
     limit: 60,
@@ -65,6 +78,9 @@ export function createApp() {
   }));
 
   app.get("/admin", requireAdmin, adminPage);
+  app.get("/admin/users",requireAdmin,adminUsersPage);
+  app.get("/api/admin/users",requireAdmin,listUsers);
+  app.post("/api/admin/users/:id",requireAdmin,sameOrigin,updateUser);
   app.get("/api/admin/usage", requireAdmin, adminSnapshot);
   app.get("/api/admin/overview", requireAdmin, adminOverview);
   app.get("/api/admin/records/:kind", requireAdmin, adminRecords);
@@ -72,6 +88,7 @@ export function createApp() {
   app.post("/api/admin/usage/reset", requireAdmin, adminReset);
   app.get("/api/admin/reliability", requireAdmin, (_req, res) => res.json({ analysis: analysisRuntimeStatus(), sources: sourceRuntimeStatus() }));
   app.use(["/api/analyze", "/api/compare", "/api/tickers", "/api/market", "/api/search"], requestLifecycle);
+  app.use(["/api/analyze", "/api/compare", "/api/tickers", "/api/market", "/api/search"],requireLiveAccess);
 
   app.get("/api/health", (_req, res) => {
     const live = getConfig();
@@ -230,7 +247,9 @@ export function createApp() {
       if (!doc) { res.status(404).json({ error: "Document not found in this analysis snapshot" }); return; }
       res.json({ ...doc, disclaimer: DISCLAIMER }); return;
     }
-    const doc = getLiveDoc(String(req.params.docId)) ?? getDoc(String(req.params.docId));
+    const liveDoc=getLiveDoc(String(req.params.docId));
+    if(liveDoc&&!res.locals.account?.live_approved){res.status(res.locals.account?403:401).json({error:"Approved login required for Live documents."});return;}
+    const doc = liveDoc ?? getDoc(String(req.params.docId));
     if (!doc) {
       res.status(404).json({ error: "Unknown document", degraded: [] });
       return;
@@ -292,6 +311,9 @@ export function createApp() {
       latency: latency === null ? null : LatencyReport.parse(latency), disclaimer: DISCLAIMER });
   });
 
+  // Same-origin authenticated workspace avoids third-party cookies and JS-readable session tokens.
+  const workspace=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"../../web/dist");
+  app.use("/vibefinance",express.static(workspace,{setHeaders(res){res.setHeader("Cache-Control","no-cache");}}));
   app.use((err: Error & { status?: number }, _req: Request, res: Response, _next: NextFunction) => {
     if (res.destroyed || res.writableEnded || res.headersSent) return;
     if (isAbort(err)) { res.status(499).json({ error: "Request cancelled", degraded: ["cancelled"] }); return; }
